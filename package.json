@@ -1,0 +1,16 @@
+{
+  "name": "nipinthebudget",
+  "version": "1.0.0",
+  "description": "A budget app to understand where your money is going and managing debt",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "install": "^0.12.2",
+    "jest": "^24.1.0",
+    "npm": "^6.8.0"
+  }
+}
