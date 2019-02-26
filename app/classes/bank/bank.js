@@ -1,5 +1,5 @@
 class Bank {
-  constructor(name = 'Unnamed', type = 'bank', balance = 0) {
+  constructor(name = 'Unnamed', type = 'bank', balance = 0, apr = 0) {
     let privateValues = {
       name,
       type,
