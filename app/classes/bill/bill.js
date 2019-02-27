@@ -14,20 +14,20 @@ class Bill {
             autoPeriods: !periods
         };
         
-        let effectsCalcs = [
+        const effectsCalcs = [
             'apr',
             'payment',
             'balance',
             'periods'
         ];
 
-        let effectsPeriods = [
+        const effectsPeriods = [
             'balance',
             'apr',
             'payment'
         ];
 
-        let effectsPayment = [
+        const effectsPayment = [
             'balance',
             'apr',
             'periods'
@@ -118,9 +118,8 @@ class Bill {
          *  Calculates monthly interest rate
          */
         this.setInterestRate = () => {
-            const periods = privateValues.periods;
             const apr = privateValues.apr;
-            return privateValues.interestRate = periods ? (apr) / periods : 0;
+            return privateValues.interestRate = apr / 12;
         }
 
         /**
@@ -143,15 +142,14 @@ class Bill {
          * Auto Caluculates payment if given balance and periods
          */
         this.runAutoCalcs = (calcPeriods, calcPayment) => {
-            const periods = this.setPeriods(calcPeriods);
-            this.setInterestRate();
-            const payment = this.setPayment(calcPayment);
-            if(!periods || (payment && calcPeriods)){
+            this.setPeriods(calcPeriods);
+            const interestRate = privateValues.interestRate !== this.setInterestRate();
+            const payment = privateValues.payment !== this.setPayment(calcPayment);
+            if(!payment || !interestRate){
                 /*
-                If did not generate periods at first,
-                but got payment now, try to calculate periods again
+                If interestRate or payment was changed, redo periods
                 */
-                this.setPeriods(calcPeriods);
+                this.setPeriods(calcPeriods);               
             }
             return privateValues.interestRate;
         }
@@ -162,16 +160,8 @@ class Bill {
          * and balance, returns amount of a monthly payment
          */
         this.estimatePayment = () => {
-            /*
-            * numberOfperiods   - number of periods (months)
-            * pv   - present value
-            * fv   - future value
-            * type - when the payments are due:
-            *        0: end of the period, e.g. end of month (default)
-            *        1: beginning of period
-            */
             let payment;
-            const interestRate = privateValues.apr / 12;
+            const interestRate = privateValues.interestRate;
             const futureValue = privateValues.futureValue;
             const periods = privateValues.periods;
             const balance = privateValues.balance;
@@ -179,8 +169,8 @@ class Bill {
             if (!interestRate){
                 return (balance + futureValue) / periods;
             }
-            const compoundedInterest = Math.pow(1 + interestRate, periods);
-            payment = -interestRate * balance * (compoundedInterest + futureValue) / (compoundedInterest - 1);
+            const interest = Math.pow(1 + interestRate, periods);
+            payment = -interestRate * balance * (interest + futureValue) / (interest - 1);
             if (type === 1){
                 payment /= (1 + interestRate);
             }
@@ -189,4 +179,4 @@ class Bill {
     }
 }
   
-  module.exports = Bill;
+module.exports = Bill;
