@@ -6,17 +6,17 @@ const defaultBillName = 'Unnamed Bill';
 const defaultBillType = 0
 const testBillType = 1;
 
-const defaultBillBalance = 0;
+const defaultBillBalance = null;
 const testNewBalance = 1000;
 
 const defaultBillAPR = 0;
 const testNewAPR = 7;
 
 const testNewPayment = 100;
-const defaultBillPayment = 0;
+const defaultBillPayment = null;
 
 const testNewPeriods = 12;
-const defaultPeriods = 0;
+const defaultPeriods = null;
 
 const testNewFutureValue = 1000;
 const defaultFutureValue = 0;
@@ -149,7 +149,9 @@ test(`new Bill.get('periods') returns given periods`, () => {
 test(`setting new balance changes periods`, () => {
     let newBill = new Bill(undefined, undefined, 1200, undefined, 100, undefined);
     expect(newBill.get('periods')).toEqual(12);
+    expect(newBill.get('payment')).toEqual(100);
     expect(newBill.set('balance',1400)).toEqual(1400);
+    expect(newBill.get('payment')).toEqual(100);
     expect(newBill.get('periods')).toEqual(14);
 });
 
@@ -179,9 +181,10 @@ test(`new Bill.get('interestRate') returns default interestRate`, () => {
     let newBill = new Bill();
     expect(newBill.get('interestRate')).toEqual(defaultBillInterestRate);
 });
-test(`new Bill. with no balance or payment will have `, () => {
+
+test(`new Bill. with no balance or payment will have null periods `, () => {
     let newBill = new Bill();
-    expect(newBill.get('periods')).toEqual(0);
+    expect(newBill.get('periods')).toEqual(defaultPeriods);
 });
 
 test(`estimated number of payments is calculated correctly`, () => {
@@ -200,5 +203,25 @@ test(`estimated number of payments is calculated correctly`, () => {
     expect(amortization[estimatedNumberOfPayments - 1].interest).toEqual(estimatedPayments.last.interest);
     expect(amortization[estimatedNumberOfPayments - 1].month).toEqual(estimatedPayments.last.month);
 });
+
+test(`new Bill adding balance and payment calculates periods`, () => {
+    let newBill = new Bill();
+    expect(newBill.set('balance',1000)).toEqual(1000);
+    expect(newBill.set('payment',100)).toEqual(100);
+    expect(newBill.get('periods')).toEqual(10);
+});
+
+test(`new Bill adding balance and period calculates payments`, () => {
+    let newBill = new Bill();
+    expect(newBill.set('balance',1000)).toEqual(1000);
+    expect(newBill.set('periods',10)).toEqual(10);
+    expect(newBill.get('payment')).toEqual(100);
+    expect(newBill.set('periods',1)).toEqual(1);
+    expect(newBill.get('payment')).toEqual(1000);
+    expect(newBill.set('apr',7)).toEqual(0.07);
+    expect(newBill.get('periods')).toEqual(2);
+    expect(newBill.get('payment')).toEqual(504.38);
+});
+
 
 
