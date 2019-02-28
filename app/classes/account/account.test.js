@@ -18,7 +18,6 @@ test('new Account creates an object', () => {
     /* Public Functions */
     expect(typeof newAccount.get).toEqual('function');
     expect(typeof newAccount.set).toEqual('function');
-    expect(typeof newAccount.monthlyInterest).toEqual('function');
     /* Accessible Props */
     expect(newAccount.get('name')).toEqual(defaults.name);
     expect(newAccount.get('balance')).toEqual(defaults.balance);

@@ -9,8 +9,5 @@ const {defaults, required} = data;
 export default class Account extends Item {
   constructor(input) {
     super(input, defaults, required);
-    this.monthlyInterest = () => {
-      return privateValues.apr / 12;
-    }
   }
 };

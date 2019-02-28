@@ -8,7 +8,7 @@ import i18next from '../i18next/i18next';
 export default (option, className) => {
         if(!option) {
             const functionName = i18next.t('namesFunctionValidateData');
-            const required = i18next.t('namesParameterNameOption');
+            const required = i18next.t('parameters.option.name');
             const error = i18next.t('functionMissingArguments', { functionName, required });
             return {
                 error

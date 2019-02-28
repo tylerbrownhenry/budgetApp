@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1551339527857" clover="3.2.0">
+  <project timestamp="1551339527858" name="All files">
+    <metrics statements="165" coveredstatements="165" conditionals="71" coveredconditionals="71" methods="20" coveredmethods="20" elements="256" coveredelements="256" complexity="0" loc="165" ncloc="165" packages="9" files="16" classes="16"/>
+    <package name="classes">
+      <metrics statements="8" coveredstatements="8" conditionals="4" coveredconditionals="4" methods="3" coveredmethods="3"/>
+      <file name="classes.js" path="/Users/rebeccahu/Desktop/budgetApp/app/classes/classes.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="item.js" path="/Users/rebeccahu/Desktop/budgetApp/app/classes/item.js">
+        <metrics statements="8" coveredstatements="8" conditionals="4" coveredconditionals="4" methods="3" coveredmethods="3"/>
+        <line num="10" count="33" type="stmt"/>
+        <line num="12" count="33" type="stmt"/>
+        <line num="13" count="33" type="cond" truecount="4" falsecount="0"/>
+        <line num="14" count="3" type="stmt"/>
+        <line num="20" count="30" type="stmt"/>
+        <line num="21" count="592" type="stmt"/>
+        <line num="28" count="30" type="stmt"/>
+        <line num="29" count="167" type="stmt"/>
+      </file>
+    </package>
+    <package name="classes.account">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="account.js" path="/Users/rebeccahu/Desktop/budgetApp/app/classes/account/account.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="11" count="6" type="stmt"/>
+      </file>
+      <file name="account.samples.js" path="/Users/rebeccahu/Desktop/budgetApp/app/classes/account/account.samples.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="classes.bill">
+      <metrics statements="76" coveredstatements="76" conditionals="31" coveredconditionals="31" methods="8" coveredmethods="8"/>
+      <file name="bill.js" path="/Users/rebeccahu/Desktop/budgetApp/app/classes/bill/bill.js">
+        <metrics statements="76" coveredstatements="76" conditionals="31" coveredconditionals="31" methods="8" coveredmethods="8"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="11" count="14" type="stmt"/>
+        <line num="12" count="14" type="stmt"/>
+        <line num="13" count="14" type="stmt"/>
+        <line num="14" count="14" type="stmt"/>
+        <line num="21" count="14" type="stmt"/>
+        <line num="27" count="14" type="stmt"/>
+        <line num="32" count="14" type="stmt"/>
+        <line num="39" count="14" type="stmt"/>
+        <line num="40" count="16" type="cond" truecount="2" falsecount="0"/>
+        <line num="41" count="2" type="stmt"/>
+        <line num="43" count="16" type="stmt"/>
+        <line num="44" count="16" type="cond" truecount="2" falsecount="0"/>
+        <line num="45" count="14" type="stmt"/>
+        <line num="46" count="14" type="stmt"/>
+        <line num="47" count="14" type="stmt"/>
+        <line num="49" count="16" type="stmt"/>
+        <line num="56" count="14" type="stmt"/>
+        <line num="57" count="47" type="stmt"/>
+        <line num="58" count="47" type="stmt"/>
+        <line num="59" count="47" type="stmt"/>
+        <line num="61" count="47" type="cond" truecount="4" falsecount="0"/>
+        <line num="62" count="25" type="stmt"/>
+        <line num="68" count="22" type="stmt"/>
+        <line num="69" count="22" type="stmt"/>
+        <line num="71" count="22" type="stmt"/>
+        <line num="73" count="22" type="stmt"/>
+        <line num="75" count="22" type="cond" truecount="2" falsecount="0"/>
+        <line num="76" count="236" type="stmt"/>
+        <line num="77" count="236" type="stmt"/>
+        <line num="78" count="236" type="stmt"/>
+        <line num="79" count="236" type="cond" truecount="2" falsecount="0"/>
+        <line num="80" count="2" type="stmt"/>
+        <line num="82" count="234" type="stmt"/>
+        <line num="84" count="236" type="stmt"/>
+        <line num="91" count="236" type="stmt"/>
+        <line num="93" count="22" type="stmt"/>
+        <line num="102" count="14" type="stmt"/>
+        <line num="103" count="54" type="stmt"/>
+        <line num="104" count="54" type="cond" truecount="4" falsecount="0"/>
+        <line num="105" count="46" type="stmt"/>
+        <line num="106" count="46" type="stmt"/>
+        <line num="107" count="46" type="stmt"/>
+        <line num="109" count="54" type="stmt"/>
+        <line num="115" count="14" type="stmt"/>
+        <line num="116" count="28" type="stmt"/>
+        <line num="117" count="28" type="stmt"/>
+        <line num="123" count="14" type="stmt"/>
+        <line num="124" count="28" type="stmt"/>
+        <line num="125" count="28" type="stmt"/>
+        <line num="126" count="28" type="stmt"/>
+        <line num="127" count="28" type="cond" truecount="3" falsecount="0"/>
+        <line num="128" count="28" type="cond" truecount="4" falsecount="0"/>
+        <line num="129" count="6" type="stmt"/>
+        <line num="131" count="28" type="stmt"/>
+        <line num="138" count="14" type="stmt"/>
+        <line num="140" count="6" type="stmt"/>
+        <line num="141" count="6" type="stmt"/>
+        <line num="142" count="6" type="stmt"/>
+        <line num="143" count="6" type="stmt"/>
+        <line num="144" count="6" type="stmt"/>
+        <line num="146" count="6" type="cond" truecount="2" falsecount="0"/>
+        <line num="147" count="3" type="stmt"/>
+        <line num="149" count="3" type="stmt"/>
+        <line num="150" count="3" type="stmt"/>
+        <line num="160" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="161" count="1" type="stmt"/>
+        <line num="163" count="3" type="stmt"/>
+        <line num="171" count="14" type="stmt"/>
+        <line num="172" count="28" type="stmt"/>
+        <line num="173" count="28" type="stmt"/>
+        <line num="174" count="28" type="stmt"/>
+        <line num="175" count="28" type="cond" truecount="4" falsecount="0"/>
+        <line num="179" count="26" type="stmt"/>
+        <line num="181" count="28" type="stmt"/>
+        <line num="184" count="14" type="stmt"/>
+      </file>
+      <file name="bill.samples.js" path="/Users/rebeccahu/Desktop/budgetApp/app/classes/bill/bill.samples.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="classes.deposit">
+      <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="deposit.js" path="/Users/rebeccahu/Desktop/budgetApp/app/classes/deposit/deposit.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="4" count="3" type="stmt"/>
+        <line num="12" count="11" type="stmt"/>
+        <line num="13" count="8" type="stmt"/>
+      </file>
+      <file name="deposit.options.js" path="/Users/rebeccahu/Desktop/budgetApp/app/classes/deposit/deposit.options.js">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="3" type="stmt"/>
+        <line num="4" count="3" type="stmt"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="6" count="3" type="stmt"/>
+      </file>
+      <file name="deposit.samples.js" path="/Users/rebeccahu/Desktop/budgetApp/app/classes/deposit/deposit.samples.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="4" count="4" type="stmt"/>
+        <line num="31" count="4" type="stmt"/>
+      </file>
+    </package>
+    <package name="classes.payment">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="payment.js" path="/Users/rebeccahu/Desktop/budgetApp/app/classes/payment/payment.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+      </file>
+      <file name="payment.samples.js" path="/Users/rebeccahu/Desktop/budgetApp/app/classes/payment/payment.samples.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="utils.generateDefaults">
+      <metrics statements="28" coveredstatements="28" conditionals="14" coveredconditionals="14" methods="3" coveredmethods="3"/>
+      <file name="generateDefaults.js" path="/Users/rebeccahu/Desktop/budgetApp/app/utils/generateDefaults/generateDefaults.js">
+        <metrics statements="28" coveredstatements="28" conditionals="14" coveredconditionals="14" methods="3" coveredmethods="3"/>
+        <line num="8" count="35" type="cond" truecount="2" falsecount="0"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="23" count="8" type="cond" truecount="2" falsecount="0"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="32" count="7" type="cond" truecount="2" falsecount="0"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="40" count="6" type="stmt"/>
+        <line num="41" count="6" type="stmt"/>
+        <line num="43" count="6" type="stmt"/>
+        <line num="46" count="6" type="stmt"/>
+        <line num="47" count="35" type="cond" truecount="2" falsecount="0"/>
+        <line num="48" count="1" type="stmt"/>
+        <line num="49" count="1" type="stmt"/>
+        <line num="51" count="35" type="cond" truecount="2" falsecount="0"/>
+        <line num="52" count="11" type="stmt"/>
+        <line num="54" count="35" type="cond" truecount="2" falsecount="0"/>
+        <line num="55" count="6" type="stmt"/>
+        <line num="59" count="6" type="cond" truecount="2" falsecount="0"/>
+        <line num="60" count="1" type="stmt"/>
+        <line num="65" count="5" type="stmt"/>
+      </file>
+    </package>
+    <package name="utils.i18next">
+      <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="i18next.js" path="/Users/rebeccahu/Desktop/budgetApp/app/utils/i18next/i18next.js">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="6" count="7" type="stmt"/>
+      </file>
+    </package>
+    <package name="utils.submitData">
+      <metrics statements="9" coveredstatements="9" conditionals="6" coveredconditionals="6" methods="1" coveredmethods="1"/>
+      <file name="submitData.js" path="/Users/rebeccahu/Desktop/budgetApp/app/utils/submitData/submitData.js">
+        <metrics statements="9" coveredstatements="9" conditionals="6" coveredconditionals="6" methods="1" coveredmethods="1"/>
+        <line num="12" count="4" type="stmt"/>
+        <line num="17" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="21" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="28" count="2" type="stmt"/>
+        <line num="29" count="2" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="utils.validateData">
+      <metrics statements="30" coveredstatements="30" conditionals="16" coveredconditionals="16" methods="2" coveredmethods="2"/>
+      <file name="validateData.js" path="/Users/rebeccahu/Desktop/budgetApp/app/utils/validateData/validateData.js">
+        <metrics statements="30" coveredstatements="30" conditionals="16" coveredconditionals="16" methods="2" coveredmethods="2"/>
+        <line num="9" count="39" type="cond" truecount="2" falsecount="0"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="17" count="38" type="stmt"/>
+        <line num="18" count="38" type="stmt"/>
+        <line num="19" count="38" type="cond" truecount="2" falsecount="0"/>
+        <line num="20" count="16" type="stmt"/>
+        <line num="21" count="16" type="stmt"/>
+        <line num="22" count="16" type="cond" truecount="4" falsecount="0"/>
+        <line num="23" count="2" type="stmt"/>
+        <line num="24" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="27" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="30" count="2" type="stmt"/>
+        <line num="31" count="2" type="stmt"/>
+        <line num="32" count="2" type="stmt"/>
+        <line num="36" count="14" type="stmt"/>
+        <line num="37" count="14" type="stmt"/>
+        <line num="38" count="14" type="stmt"/>
+        <line num="39" count="17" type="cond" truecount="2" falsecount="0"/>
+        <line num="40" count="3" type="stmt"/>
+        <line num="41" count="3" type="stmt"/>
+        <line num="44" count="14" type="cond" truecount="2" falsecount="0"/>
+        <line num="45" count="3" type="stmt"/>
+        <line num="46" count="3" type="stmt"/>
+        <line num="47" count="3" type="stmt"/>
+        <line num="54" count="33" type="stmt"/>
+      </file>
+      <file name="validateData.samples.js" path="/Users/rebeccahu/Desktop/budgetApp/app/utils/validateData/validateData.samples.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+  </project>
+</coverage>

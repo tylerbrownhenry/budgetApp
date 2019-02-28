@@ -34,6 +34,7 @@ export default {
     /* Defaults */
     defaults,
     required,
+    settings,
     /* Sample Data */
     samples: [{
         name:  i18next.t('sampleDepositName'),

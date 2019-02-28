@@ -142,14 +142,18 @@ export default class Bill extends Item {
             const periods = this.get('periods');
             const balance = this.get('balance');
             const type = this.get('type');
+         
             if (!interestRate){
                 return (balance + futureValue) / periods;
             }
+            
             const interest = Math.pow(1 + interestRate, periods);
             payment = -interestRate * balance * (interest + futureValue) / (interest - 1);
+
             if (type === 1){
                 payment /= (1 + interestRate);
             }
+
             return payment.toFixed(2) * -1;
         }
 

@@ -120,5 +120,20 @@ test(`new Bill adding balance and period calculates payments`, () => {
     expect(newBill.get('payment')).toEqual(samples[4].payment);
 });
 
+test(`paying exact amount of balance with interest will require 1 payment`, () => {
+    let newBill = new Bill(samples[5]);
+    expect(newBill.get('periods')).toEqual(samples[5].periods);
+    expect(newBill.set('balance',samples[6].balance)).toEqual(samples[6].balance);
+    expect(newBill.set('payment',samples[6].payment)).toEqual(samples[6].payment);
+    expect(newBill.get('periods')).toEqual(samples[6].periods);
+});
+
+test(`credit card with type 1 payment`, () => {
+    let newBill = new Bill(samples[7]);
+    expect(newBill.set('periods', 12)).toEqual(12);
+});
+
+
+
 
 

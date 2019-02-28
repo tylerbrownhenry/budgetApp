@@ -21,17 +21,43 @@ i18next.init({
             "sampleBillName3": 'Credit Card with Low Balance but more periods',
             "sampleBillName4": 'Credit Card with Low Balance but even more periods',
             "sampleBillName5": 'Credit Card with Low Balance but high apr',
+            "sampleBillName6": 'Credit Card with 2 payments',
+            "sampleBillName7": 'Credit Card with last payment',
+            "sampleBillName7": 'Credit Card with type 1 payment and no payment set',
             "sampleAccountName": 'Chase Credit Card',
             "sampleAccountName2": "Bank of America Checking",
             "namesFunctionValidateData": 'Validate Data',
             "namesFunctionSubmitData": 'Submit Data',
             "namesFunctionGenerateDefaults": "Generate Defaults",
-            "namesParameterNameOption": 'option',
-            "namesParameterNameSetttings": 'settings',
-            "namesParameterNameKey": 'key',
-            "namesParameterNameClass": 'class',
-            "namesParameterNameRequired": 'required',
-            "namesParameterNameValues": 'values',
+            
+            "parameters": {
+                "option": {
+                    "name": "option"
+                },
+                "settings": {
+                    "name":"settings"
+                },
+                "class": {
+                    "name":"class"
+                },
+                "required": {
+                    "name":"required"
+                },
+                "values": {
+                    "name":"values"
+                },
+                "key": {
+                    "name":"key"
+                }
+            },
+            // "namesParameterNameOption": 'option',
+            // "namesParameterNameSetttings": 'settings',
+            // "namesParameterNameClass": 'class',
+            // "namesParameterNameRequired": 'required',
+            // "namesParameterNameValues": 'values',
+
+
+
             "functionMissingArguments": `{{functionName}} called missing required argument(s) [{{required}}]'`,
             "constructorMissingArguments": `{{functionName}} requires [{{required}}]'`,
             "doesNotExist": `"{{missing}}" does not exist`,

@@ -58,6 +58,31 @@ export default {
         type: 1,
         payment: 49.43,
         periods: 22
+    },
+    {
+        name: i18next.t('sampleBillName6'),
+        id: '111',
+        balance: 1100,
+        apr: 8.9,
+        type: 1,
+        payment: 1000,
+        periods: 2
+    },
+    {
+        name: i18next.t('sampleBillName7'),
+        id: '775',
+        balance: 1000,
+        apr: 8.9,
+        type: 1,
+        payment: 1007.42,
+        periods: 1
+    },
+    {
+        name: i18next.t('sampleBillName8'),
+        id: '342',
+        balance: 1000,
+        apr: 8.9,
+        type: 1
     }],
     amortization: {
         first:{ 

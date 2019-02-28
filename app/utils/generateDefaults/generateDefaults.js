@@ -6,7 +6,7 @@ import i18next from '../i18next/i18next';
  */
 function checkKeyHasKey(setting){
     if(!setting.key) {
-        const required = i18next.t('namesParameterNameKey');
+        const required = i18next.t('parameters.key.name');
         const functionName = i18next.t('namesFunctionGenerateDefaults');
         const error = i18next.t('functionMissingArguments', { functionName, required} );
         return {
@@ -40,10 +40,13 @@ export default (settings) =>{
     let defaults = {};
     let required = [];
     let error;
+    let failed = false;
+    let temp;
 
     settings.forEach((setting) => {
-        if(error = checkKeyHasKey(setting)){
-            throw error;
+        if(temp = checkKeyHasKey(setting)){
+            failed = true;
+            error = temp;
         }
         if(setting.default){
             defaults[setting.key] = setting.default;
@@ -52,7 +55,13 @@ export default (settings) =>{
             required.push(setting.key);
         }
     });
-    
+
+    if(failed){
+        return {
+            error
+        }
+    }
+
     return {
         defaults,
         required
