@@ -61,7 +61,7 @@ Payment
 
 Input:
 
-Banks / Credit Cards
+Payment Accounts
     Bank 1 - $3000
     Bank 2 - $4000
     Credit Card 1 - $1500 (Debt), 7% APR, $80 Min Payment, Type 1

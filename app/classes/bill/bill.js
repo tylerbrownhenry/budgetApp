@@ -1,19 +1,16 @@
-class Bill {
-    constructor(name = 'Unnamed Bill', type = 0, balance = null, apr = 0, payment = null, periods = null, futureValue = 0) {
-        let privateValues = {
-            name,
-            type,
-            balance,
-            apr: apr / 100,
-            payment,
-            periods,
-            balance,
-            amortization: [],
-            futureValue,
-            interestRate: 0,
-            autoPeriods: !periods
-        };
-        
+import Item from '../item';
+import data from './bill.samples';
+const {defaults, required} = data;
+
+/**
+ * Creates a new Bill
+ * @class
+ */
+export default class Bill extends Item {
+    constructor(input) {
+        super(input, defaults, required);
+        this.set('apr', this.get('apr') / 100);
+        const superSet = super.set;
         const effectsCalcs = [
             'apr',
             'payment',
@@ -28,18 +25,11 @@ class Bill {
         ];
 
         const effectsPayment = [
-            'balance',
             'apr',
             'periods'
         ];
 
-        /**
-         * Gettter
-         * @param  {string} prop
-         */
-        this.get = (prop) =>{
-            return privateValues[prop];
-        }
+        this._set = this.set; // Keeping super.set
         
         /**
          * Setter
@@ -47,36 +37,40 @@ class Bill {
          * @param  {string|number} value
          */
         this.set = (prop, value) =>{
-            privateValues[prop] = value;
             if(prop === 'apr'){
-                value = privateValues.apr = value / 100;
+                value = value / 100;
             }
+            this._set(prop, value);
             if(effectsCalcs.indexOf(prop) !== -1){
                 const calcPayment = effectsPayment.indexOf(prop) !== -1;
                 const calcPeriods = effectsPeriods.indexOf(prop) !== -1;
                 this.runAutoCalcs(calcPeriods, calcPayment);
             }
-            return value;
-        }
+            return this.get(prop);
+        };
 
         /**
          * Given balance and payment, calculates the number of payments needs,
          * and returns amortization of all payments over time
          */
         this.estimateNumberOfPayments = () => {
-            if(privateValues.balance <= 0 || !privateValues.payment){
+            let balance = this.get('balance');
+            const payment = this.get('payment');
+            const apr = this.get('apr');
+
+            if(balance <= 0 || !payment){
                 return {
                     payments: null,
                     amortization: []
                 };    
             }
+
             let i = 0;
-            let fixedPayment = privateValues.payment.toFixed(2);
-            let balance = privateValues.balance;
+            let fixedPayment = payment.toFixed(2);
             let totalBalance;
             let amortization = [];
             let startBalance;
-            const interestRate = Math.pow(1 + (privateValues.apr / 12), 1);
+            const interestRate = Math.pow(1 + (apr / 12), 1);
 
             while (balance > 0 && i < 360) {
                 startBalance = balance;
@@ -88,7 +82,7 @@ class Bill {
                     balance -= fixedPayment - interest;            
                 } 
                 amortization.push({
-                    principle: (privateValues.payment - interest).toFixed(2),
+                    principle: (payment - interest).toFixed(2),
                     interest: interest.toFixed(2),
                     start: startBalance.toFixed(2),
                     end: balance.toFixed(2),
@@ -106,66 +100,48 @@ class Bill {
          * Checks if can auto calculate numnber of periods
          */
         this.setPeriods = (calcPeriods)=> {
-            if(privateValues.periods === null || calcPeriods){
+            const periods = this.get('periods');
+            if(periods === null || calcPeriods){
                 const resp = this.estimateNumberOfPayments();
-                privateValues.periods = resp.payments;
-                privateValues.amortization = resp.amortization;
+                this._set('periods', resp.payments);
+                this._set('amorization', resp.amortization);
             }
-            return privateValues.periods;
+            return this.get('periods');
         }
 
         /**
          *  Calculates monthly interest rate
          */
         this.setInterestRate = () => {
-            const apr = privateValues.apr;
-            return privateValues.interestRate = apr / 12;
+            const apr = this.get('apr')
+            return this._set('interestRate', apr / 12);
         }
 
         /**
          *  Checks if can auto calculate monthly payment
          */
         this.setPayment = (calcPayment) => {
-            const periods = privateValues.periods;
-            const balance = privateValues.balance;
-            const payment = privateValues.payment;
+            const periods = this.get('periods');
+            const balance = this.get('balance');
+            const payment = this.get('payment');
             const initValue = periods && balance && !payment;
             if(initValue || calcPayment){
-                privateValues.payment = this.estimatePayment();
+                this._set('payment', this.estimatePayment());
             }
-            return privateValues.payment;
+            return this.get('payment');
         }
-
-        /**
-         * Calculates monthly interest rate
-         * Auto Caluculates periods if given payment and balance
-         * Auto Caluculates payment if given balance and periods
-         */
-        this.runAutoCalcs = (calcPeriods, calcPayment) => {
-            this.setPeriods(calcPeriods);
-            const interestRate = privateValues.interestRate !== this.setInterestRate();
-            const payment = privateValues.payment !== this.setPayment(calcPayment);
-            if(!payment || !interestRate){
-                /*
-                If interestRate or payment was changed, redo periods
-                */
-                this.setPeriods(calcPeriods);               
-            }
-            return privateValues.interestRate;
-        }
-        this.runAutoCalcs(true);
-        
+       
         /**
          * Given number of interest rate, number of periods 
          * and balance, returns amount of a monthly payment
          */
         this.estimatePayment = () => {
             let payment;
-            const interestRate = privateValues.interestRate;
-            const futureValue = privateValues.futureValue;
-            const periods = privateValues.periods;
-            const balance = privateValues.balance;
-            const type = privateValues.type;
+            const interestRate = this.get('interestRate');
+            const futureValue = this.get('futureValue');
+            const periods = this.get('periods');
+            const balance = this.get('balance');
+            const type = this.get('type');
             if (!interestRate){
                 return (balance + futureValue) / periods;
             }
@@ -176,7 +152,25 @@ class Bill {
             }
             return payment.toFixed(2) * -1;
         }
+
+        /**
+         * Calculates monthly interest rate
+         * Auto Caluculates periods if given payment and balance
+         * Auto Caluculates payment if given balance and periods
+         */
+        this.runAutoCalcs = (calcPeriods, calcPayment) => {
+            this.setPeriods(calcPeriods);
+            const interestRate = this.get('interestRate') !== this.setInterestRate();
+            const payment = this.get('payment') !== this.setPayment(calcPayment);
+            if(!payment || !interestRate){
+                /*
+                If interestRate or payment was changed, redo periods
+                */
+                this.setPeriods(calcPeriods);               
+            }
+            return this.get('interestRate');
+        }
+
+        this.runAutoCalcs(true);
     }
-}
-  
-module.exports = Bill;
+};

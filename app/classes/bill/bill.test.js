@@ -1,226 +1,123 @@
-const Bill = require('./bill');
+import Bill from './bill';
+import data from './bill.samples';
 
-const testBillName = 'New Bill Name';
-const defaultBillName = 'Unnamed Bill';
-
-const defaultBillType = 0
-const testBillType = 1;
-
-const defaultBillBalance = null;
-const testNewBalance = 1000;
-
-const defaultBillAPR = 0;
-const testNewAPR = 7;
-
-const testNewPayment = 100;
-const defaultBillPayment = null;
-
-const testNewPeriods = 12;
-const defaultPeriods = null;
-
-const testNewFutureValue = 1000;
-const defaultFutureValue = 0;
-
-const defaultBillInterestRate = 0;
-const calculatedInterestRate = 0.005833333333333334;
-
-const projectedPayment = 44.77;
-const estimatedNumberOfPayments = 11;
-
-const estimatedPayments = {
-    first:{ 
-        principle: '94.17',
-        interest: '5.83',
-        start: '1000.00',
-        end: '905.83',
-        month: 1 
-    },
-    last:{ 
-        principle: '99.81',
-        interest: '0.19',
-        start: '33.23',
-        end: '-66.58',
-        month: 11
-    }
-};
+const {defaults, samples, amortization} = data;
 
 test('Bill is defined', () => {
   expect(Bill).toBeDefined();
 });
 
 test('new Bill creates an object', () => {
-    let newBank = new Bill(testBillName);
-    expect(typeof newBank).toEqual('object');
+    let newBill = new Bill();
+    expect(typeof newBill).toEqual('object');
     expect(Bill).toEqual(Bill.prototype.constructor);
     /* Private Props */
-    expect(newBank.name).toBeUndefined();
-    expect(newBank.balance).toBeUndefined();
-    expect(newBank.type).toBeUndefined();
-    expect(newBank.apr).toBeUndefined();
-    expect(newBank.payment).toBeUndefined();
-    expect(newBank.periods).toBeUndefined();
-    expect(newBank.interestRate).toBeUndefined();
-});
-
-test(`new Bill.get('name') returns given name`, () => {
-    let newBill = new Bill(testBillName);
+    expect(newBill.name).toBeUndefined();
+    expect(newBill.balance).toBeUndefined();
+    expect(newBill.type).toBeUndefined();
+    expect(newBill.apr).toBeUndefined();
+    expect(newBill.payment).toBeUndefined();
+    expect(newBill.periods).toBeUndefined();
+    expect(newBill.interestRate).toBeUndefined();
+    /* Accessible Functions */
     expect(typeof newBill.get).toEqual('function');
-    expect(newBill.get('name')).toEqual(testBillName);
+    expect(typeof newBill.set).toEqual('function');
+    /* Accessible Props */
+    expect(newBill.get('name')).toEqual(defaults.name);
+    expect(newBill.get('balance')).toEqual(defaults.balance);
+    expect(newBill.get('type')).toEqual(defaults.type);
+    expect(newBill.get('apr')).toEqual(defaults.apr);
+    expect(newBill.get('payment')).toEqual(defaults.payment);
+    expect(newBill.get('periods')).toEqual(defaults.periods);
+    expect(newBill.get('interestRate')).toEqual(defaults.interestRate);
 });
 
-test(`new Bill.get('name') returns default name`, () => {
-    let newBill = new Bill(undefined);
-    expect(newBill.get('name')).toEqual(defaultBillName);
-});
-
-test(`new Bill.get('type') returns given type`, () => {
-    let newBill = new Bill(undefined, testBillType);
-    expect(newBill.get('type')).toEqual(testBillType);
-});
-
-test(`new Bill.get('type') returns default type`, () => {
-    let newBill = new Bill(undefined,undefined);
-    expect(newBill.get('type')).toEqual(defaultBillType);
+test(`new Bill.get(attribute) returns given attrbiute`, () => {
+    let newBill = new Bill(samples[0]);
+    expect(newBill.get('name')).toEqual(samples[0].name);
+    expect(newBill.get('balance')).toEqual(samples[0].balance);
+    expect(newBill.get('apr')).toEqual(samples[0].apr / 100);
+    expect(newBill.get('periods')).toEqual(samples[0].periods);
+    expect(newBill.get('type')).toEqual(samples[0].type);
+    expect(newBill.get('payment')).toEqual(samples[0].payment);
 });
 
 test(`new Bill.set('type') returns given type`, () => {
-    let newBill = new Bill(undefined, undefined, undefined);
-    expect(newBill.get('type')).toEqual(defaultBillType);
-    expect(newBill.set('type',testBillType)).toEqual(testBillType);
-    expect(newBill.get('type')).toEqual(testBillType);
-});
-
-test(`new Bill.get('balance') returns given balance`, () => {
-    let newBill = new Bill(undefined, undefined, testNewBalance);
-    expect(newBill.get('balance')).toEqual(testNewBalance);
+    let newBill = new Bill();
+    expect(newBill.set('type',samples[0].type)).toEqual(samples[0].type);
+    expect(newBill.get('type')).toEqual(samples[0].type);
 });
 
 test(`new Bill.set('balance') returns given balance`, () => {
-    let newBill = new Bill(undefined, undefined, undefined);
-    expect(newBill.get('balance')).toEqual(defaultBillBalance);
-    expect(newBill.set('balance',testNewBalance)).toEqual(testNewBalance);
-    expect(newBill.get('balance')).toEqual(testNewBalance);
-});
-
-test(`new Bill.get('balance') returns default balance`, () => {
-    let newBill = new Bill(undefined);
-    expect(newBill.get('balance')).toEqual(defaultBillBalance);
+    let newBill = new Bill();
+    expect(newBill.set('balance',samples[0].balance)).toEqual(samples[0].balance);
+    expect(newBill.get('balance')).toEqual(samples[0].balance);
 });
 
 test(`new Bill.get('apr') returns given apr`, () => {
-    let newBill = new Bill(undefined, undefined, undefined, testNewAPR);
-    expect(newBill.get('apr')).toEqual(testNewAPR / 100);
-});
-
-test(`new Bill.set('apr') returns given apr`, () => {
-    let newBill = new Bill(undefined, undefined, undefined, undefined);
-    expect(newBill.get('apr')).toEqual(defaultBillAPR);
-    expect(newBill.set('apr',testNewAPR)).toEqual(testNewAPR / 100);
-    expect(newBill.get('apr')).toEqual(testNewAPR / 100);
-});
-
-test(`new Bill.get('apr') returns default apr`, () => {
-    let newBill = new Bill(undefined, undefined, undefined, undefined);
-    expect(newBill.get('apr')).toEqual(defaultBillAPR);
-});
-
-test(`new Bill.get('payment') returns given payment`, () => {
-    let newBill = new Bill(undefined, undefined, undefined, undefined, testNewPayment);
-    expect(newBill.get('payment')).toEqual(testNewPayment);
+    let newBill = new Bill();
+    expect(newBill.set('apr',samples[0].apr)).toEqual(samples[0].apr / 100);
+    expect(newBill.get('apr')).toEqual(samples[0].apr / 100);
 });
 
 test(`new Bill.set('payment') returns given payment`, () => {
-    let newBill = new Bill(undefined, undefined, undefined, undefined, undefined);
-    expect(newBill.get('payment')).toEqual(defaultBillPayment);
-    expect(newBill.set('payment',testNewPayment)).toEqual(testNewPayment);
-    expect(newBill.get('payment')).toEqual(testNewPayment);
-});
-
-test(`new Bill.get('payment') returns default payment`, () => {
-    let newBill = new Bill(undefined, undefined, undefined, undefined, undefined);
-    expect(newBill.get('payment')).toEqual(defaultBillPayment);
+    let newBill = new Bill();
+    expect(newBill.set('payment',samples[0].payment)).toEqual(samples[0].payment);
+    expect(newBill.get('payment')).toEqual(samples[0].payment);
 });
 
 test(`new Bill.get('periods') returns given periods`, () => {
-    let newBill = new Bill(undefined, undefined, 1200, undefined, 100, testNewPeriods);
-    expect(newBill.get('periods')).toEqual(testNewPeriods);
-});
-
-test(`setting new balance changes periods`, () => {
-    let newBill = new Bill(undefined, undefined, 1200, undefined, 100, undefined);
-    expect(newBill.get('periods')).toEqual(12);
-    expect(newBill.get('payment')).toEqual(100);
-    expect(newBill.set('balance',1400)).toEqual(1400);
-    expect(newBill.get('payment')).toEqual(100);
-    expect(newBill.get('periods')).toEqual(14);
-});
-
-test(`new Bill.get('periods') returns default periods`, () => {
-    let newBill = new Bill(undefined, undefined, undefined, undefined, undefined, undefined);
-    expect(newBill.get('periods')).toEqual(defaultPeriods);
+    let newBill = new Bill();
+    expect(newBill.set('periods',samples[0].periods)).toEqual(samples[0].periods);
+    expect(newBill.get('periods')).toEqual(samples[0].periods);
 });
 
 test(`new Bill.get('futureValue') returns given futureValue`, () => {
-    let newBill = new Bill(undefined, undefined, undefined, undefined, undefined, undefined, testNewFutureValue);
-    expect(newBill.get('futureValue')).toEqual(testNewFutureValue);
-});
-
-test(`new Bill.set('futureValue') returns given futureValue`, () => {
-    let newBill = new Bill(undefined, undefined, undefined, undefined, undefined, undefined, undefined);
-    expect(newBill.get('futureValue')).toEqual(defaultFutureValue);
-    expect(newBill.set('futureValue',testNewFutureValue)).toEqual(testNewFutureValue);
-    expect(newBill.get('futureValue')).toEqual(testNewFutureValue);
-});
-
-test(`new Bill.get('futureValue') returns default futureValue`, () => {
-    let newBill = new Bill(undefined, undefined, undefined, undefined, undefined, undefined, undefined);
-    expect(newBill.get('futureValue')).toEqual(defaultFutureValue);
-});
-
-test(`new Bill.get('interestRate') returns default interestRate`, () => {
     let newBill = new Bill();
-    expect(newBill.get('interestRate')).toEqual(defaultBillInterestRate);
+    expect(newBill.set('futureValue',samples[0].futureValue)).toEqual(samples[0].futureValue);
+    expect(newBill.get('futureValue')).toEqual(samples[0].futureValue);
 });
 
-test(`new Bill. with no balance or payment will have null periods `, () => {
-    let newBill = new Bill();
-    expect(newBill.get('periods')).toEqual(defaultPeriods);
+test(`setting new balance changes periods`, () => {
+    let newBill = new Bill(samples[0]);
+    expect(newBill.set('balance',samples[1].balance)).toEqual(samples[1].balance);
+    expect(newBill.get('payment')).toEqual(samples[1].payment);
+    expect(newBill.get('periods')).toEqual(samples[1].periods);
+});
+
+test(`setting new balance and payment calculates periods`, () => {
+        let newBill = new Bill(samples[0]);
+        expect(newBill.set('balance',samples[1].balance)).toEqual(samples[1].balance);
+        expect(newBill.set('payment',samples[1].payment)).toEqual(samples[1].payment);
+        expect(newBill.get('periods')).toEqual(samples[1].periods);
 });
 
 test(`estimated number of payments is calculated correctly`, () => {
-    let newBill = new Bill(testBillName, 0, testNewBalance, testNewAPR, testNewPayment, testNewPeriods);
+    let newBill = new Bill(samples[0]);
     let payments = newBill.estimateNumberOfPayments();
-    let amortization = payments.amortization;
-    expect(payments.payments).toEqual(estimatedNumberOfPayments);
-    expect(amortization[0].start).toEqual(estimatedPayments.first.start);
-    expect(amortization[0].end).toEqual(estimatedPayments.first.end);
-    expect(amortization[0].principle).toEqual(estimatedPayments.first.principle);
-    expect(amortization[0].interest).toEqual(estimatedPayments.first.interest);
-    expect(amortization[0].month).toEqual(estimatedPayments.first.month);
-    expect(amortization[estimatedNumberOfPayments - 1].start).toEqual(estimatedPayments.last.start);
-    expect(amortization[estimatedNumberOfPayments - 1].end).toEqual(estimatedPayments.last.end);
-    expect(amortization[estimatedNumberOfPayments - 1].principle).toEqual(estimatedPayments.last.principle);
-    expect(amortization[estimatedNumberOfPayments - 1].interest).toEqual(estimatedPayments.last.interest);
-    expect(amortization[estimatedNumberOfPayments - 1].month).toEqual(estimatedPayments.last.month);
-});
-
-test(`new Bill adding balance and payment calculates periods`, () => {
-    let newBill = new Bill();
-    expect(newBill.set('balance',1000)).toEqual(1000);
-    expect(newBill.set('payment',100)).toEqual(100);
-    expect(newBill.get('periods')).toEqual(10);
+    let numberOfPayments = payments.amortization.length - 1;
+    expect(payments.amortization[0].start).toEqual(amortization.first.start);
+    expect(payments.amortization[0].end).toEqual(amortization.first.end);
+    expect(payments.amortization[0].principle).toEqual(amortization.first.principle);
+    expect(payments.amortization[0].interest).toEqual(amortization.first.interest);
+    expect(payments.amortization[0].month).toEqual(amortization.first.month);
+    expect(payments.amortization[numberOfPayments].start).toEqual(amortization.last.start);
+    expect(payments.amortization[numberOfPayments].end).toEqual(amortization.last.end);
+    expect(payments.amortization[numberOfPayments].principle).toEqual(amortization.last.principle);
+    expect(payments.amortization[numberOfPayments].interest).toEqual(amortization.last.interest);
+    expect(payments.amortization[numberOfPayments].month).toEqual(amortization.last.month);
 });
 
 test(`new Bill adding balance and period calculates payments`, () => {
     let newBill = new Bill();
-    expect(newBill.set('balance',1000)).toEqual(1000);
-    expect(newBill.set('periods',10)).toEqual(10);
-    expect(newBill.get('payment')).toEqual(100);
-    expect(newBill.set('periods',1)).toEqual(1);
-    expect(newBill.get('payment')).toEqual(1000);
-    expect(newBill.set('apr',7)).toEqual(0.07);
-    expect(newBill.get('periods')).toEqual(2);
-    expect(newBill.get('payment')).toEqual(504.38);
+    expect(newBill.set('balance',samples[0].balance)).toEqual(samples[0].balance);
+    expect(newBill.set('periods',samples[1].periods)).toEqual(samples[1].periods);
+    expect(newBill.get('payment')).toEqual(samples[2].payment);
+    expect(newBill.set('periods',samples[2].periods)).toEqual(samples[2].periods);
+    expect(newBill.get('payment')).toEqual(samples[3].payment);
+    expect(newBill.set('apr',samples[4].apr)).toEqual(samples[4].apr / 100);
+    expect(newBill.get('periods')).toEqual(samples[4].periods);
+    expect(newBill.get('payment')).toEqual(samples[4].payment);
 });
 
 
