@@ -4,7 +4,7 @@ jest.mock('../getData/getData');
 import getData from '../getData/getData'; 
 import state from '../../classes/state/state.samples';
 
-describe('stateHandler nested functions',()=>{
+describe('stateHandler',()=>{
     beforeEach(() => {
         getData.loadStates.mockReturnValue(Promise.resolve({results:state}));
     });
@@ -12,8 +12,7 @@ describe('stateHandler nested functions',()=>{
     test('stateHandler.init(id) with mocked data will return a default state', () => {
         expect.assertions(1);
         return stateHandler.init({id:123}).then((response)=>{
-            console.log('response',response);
-            return expect(response.state[1].get('id')).toEqual(response.defaultState);
+            return expect(response.state[1].id).toEqual(response.defaultState);
         });
     });
 

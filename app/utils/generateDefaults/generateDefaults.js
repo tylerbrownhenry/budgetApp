@@ -47,7 +47,7 @@ export default (settings) =>{
             failed = true;
             error = temp;
         }
-        if(setting.default){
+        if(typeof setting.default !== 'undefined'){
             defaults[setting.key] = setting.default;
         }
         if(setting.required){

@@ -22,10 +22,10 @@ export default (option, className) => {
             if(checkRequire || checkValues) {
                 let item = [];
                 if(checkRequire){
-                    item.push(i18next.t('namesParameterNameRequired'));
+                    item.push(i18next.t('parameter.required.name'));
                 }
                 if(checkValues){
-                    item.push(i18next.t('namesParameterNameValues'));
+                    item.push(i18next.t('parameter.values.name'));
                 }
                 item = item.join(',');
                 const error = i18next.t('error.array.isNot', { item });
@@ -42,7 +42,7 @@ export default (option, className) => {
                     }
                 });
                 if(failed){
-                    const functionName = `${i18next.t('namesParameterNameClass')}:${className}`;
+                    const functionName = `${i18next.t('parameter.class.name')}:${className}`;
                     const error = i18next.t('error.constructor.missingArguments', { functionName, required: required.join(',')});
                     return {
                         error,
@@ -51,5 +51,5 @@ export default (option, className) => {
                 }
             }
         }
-        return;
+    return;
 }

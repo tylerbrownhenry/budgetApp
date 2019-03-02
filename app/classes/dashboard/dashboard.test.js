@@ -3,12 +3,16 @@ import samples from './dashboard.samples';
 import data from './dashboard.defaults';
 const {defaults, required} = data;
 
-test('Dashboard is defined', () => {
-    expect(Dashboard).toBeDefined();
-});
+describe('Class Dashboard', () => {
 
-test('new Dashboard creates an object', () => {
-    let newDashboard = new Dashboard();
-    expect(typeof newDashboard).toEqual('object');
+    test('is defined', () => {
+        expect(Dashboard).toBeDefined();
+    });
+
+    test('creates an object', () => {
+        let newDashboard = new Dashboard();
+        expect(typeof newDashboard).toEqual('object');
+    });
+
 });
   

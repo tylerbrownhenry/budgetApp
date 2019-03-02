@@ -34,7 +34,6 @@ export default {
             resolve(response);
         } else {
             response.info = i18next.t('info.data.none.saved',{items: className});
-            console.log('response',response);
             resolve(response);
         }
     }

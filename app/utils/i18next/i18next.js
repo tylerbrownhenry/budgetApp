@@ -22,7 +22,8 @@ i18next.init({
                     "failed": `Error fetching data: [{{details}}]`
                 },
                 "constructor":{
-                    "missingArguments": `{{functionName}} requires [{{required}}]'`
+                    "missingArguments": `{{functionName}} requires [{{required}}]'`,
+                    "useSet": `Use 'set' method when editing property values`
                 },
                 "function":{
                     "missingArguments": `{{functionName}} called missing required argument(s) [{{required}}]'`

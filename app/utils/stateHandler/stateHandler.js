@@ -10,8 +10,8 @@ const {State} = classes;
  * @param  {object} state
  */
 const process = function processDataItemFunction(response, state){
-    if(state.get('default')){
-        response.defaultState = state.get('id')
+    if(state.default){
+        response.defaultState = state.id;
     }
     return response;
 }

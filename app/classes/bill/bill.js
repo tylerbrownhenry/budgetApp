@@ -9,7 +9,7 @@ const {defaults, required} = data;
 export default class Bill extends Item {
     constructor(input) {
         super(input, defaults, required);
-        this.set('apr', this.get('apr') / 100);
+        this.set('apr', this.apr / 100);
         const superSet = super.set;
         const effectsCalcs = [
             'apr',
@@ -46,7 +46,7 @@ export default class Bill extends Item {
                 const calcPeriods = effectsPeriods.indexOf(prop) !== -1;
                 this.runAutoCalcs(calcPeriods, calcPayment);
             }
-            return this.get(prop);
+            return this[prop];
         };
 
         /**
@@ -54,9 +54,9 @@ export default class Bill extends Item {
          * and returns amortization of all payments over time
          */
         this.estimateNumberOfPayments = () => {
-            let balance = this.get('balance');
-            const payment = this.get('payment');
-            const apr = this.get('apr');
+            let balance = this.balance;
+            const payment = this.payment;
+            const apr = this.apr;
 
             if(balance <= 0 || !payment){
                 return {
@@ -100,20 +100,20 @@ export default class Bill extends Item {
          * Checks if can auto calculate numnber of periods
          */
         this.setPeriods = (calcPeriods)=> {
-            const periods = this.get('periods');
+            const periods = this.periods;
             if(periods === null || calcPeriods){
                 const resp = this.estimateNumberOfPayments();
                 this._set('periods', resp.payments);
                 this._set('amorization', resp.amortization);
             }
-            return this.get('periods');
+            return this.periods;
         }
 
         /**
          *  Calculates monthly interest rate
          */
         this.setInterestRate = () => {
-            const apr = this.get('apr')
+            const apr = this.apr
             return this._set('interestRate', apr / 12);
         }
 
@@ -121,14 +121,14 @@ export default class Bill extends Item {
          *  Checks if can auto calculate monthly payment
          */
         this.setPayment = (calcPayment) => {
-            const periods = this.get('periods');
-            const balance = this.get('balance');
-            const payment = this.get('payment');
+            const periods = this.periods;
+            const balance = this.balance;
+            const payment = this.payment;
             const initValue = periods && balance && !payment;
             if(initValue || calcPayment){
                 this._set('payment', this.estimatePayment());
             }
-            return this.get('payment');
+            return this.payment;
         }
        
         /**
@@ -137,11 +137,11 @@ export default class Bill extends Item {
          */
         this.estimatePayment = () => {
             let payment;
-            const interestRate = this.get('interestRate');
-            const futureValue = this.get('futureValue');
-            const periods = this.get('periods');
-            const balance = this.get('balance');
-            const type = this.get('type');
+            const interestRate = this.interestRate;
+            const futureValue = this.futureValue;
+            const periods = this.periods;
+            const balance = this.balance;
+            const type = this.type;
          
             if (!interestRate){
                 return (balance + futureValue) / periods;
@@ -164,15 +164,15 @@ export default class Bill extends Item {
          */
         this.runAutoCalcs = (calcPeriods, calcPayment) => {
             this.setPeriods(calcPeriods);
-            const interestRate = this.get('interestRate') !== this.setInterestRate();
-            const payment = this.get('payment') !== this.setPayment(calcPayment);
+            const interestRate = this.interestRate !== this.setInterestRate();
+            const payment = this.payment !== this.setPayment(calcPayment);
             if(!payment || !interestRate){
                 /*
                 If interestRate or payment was changed, redo periods
                 */
                 this.setPeriods(calcPeriods);               
             }
-            return this.get('interestRate');
+            return this.interestRate;
         }
 
         this.runAutoCalcs(true);

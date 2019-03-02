@@ -1,4 +1,7 @@
 import validateData from '../utils/validateData/validateData';
+import i18next from '../utils/i18next/i18next';
+
+
 
 /**
  * Creates a new Item.
@@ -9,24 +12,34 @@ export default class Item {
 
         let values = { ...defaults, ...input};
 
+        for (let property in values) {
+            if (values.hasOwnProperty(property)) {
+                /**
+                 * Returns a getter and setter as the property
+                 */
+               Object.defineProperty(this, property, {
+                    get: () => { 
+                        return values[property]; 
+                    },
+                    set: (value) => { 
+                        throw i18next.t('error.constructor.useSet');
+                    }
+                });
+            }
+        }
+
         const validateResponse = validateData({values, required}, this.constructor.name);
         if(validateResponse && validateResponse.error){
             throw validateResponse;
         }
-        /**
-         * Gettter
-         * @param  {string} prop
-         */
-        this.get = (prop) =>{
-            return values[prop];
-        }
 
         /**
          * Setter
-         * @param  {string} prop
+         * @param  {string} property
          */
-        this.set = (prop, value) =>{
-            return values[prop] = value;
+        this.set = (property, value) =>{
+            values[property] = value
+            return values[property];
         }
-    }
+    }    
 }
