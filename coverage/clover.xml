@@ -1,17 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1551484765741" clover="3.2.0">
-  <project timestamp="1551484765742" name="All files">
-    <metrics statements="212" coveredstatements="208" conditionals="92" coveredconditionals="86" methods="35" coveredmethods="34" elements="339" coveredelements="328" complexity="0" loc="212" ncloc="212" packages="15" files="28" classes="28"/>
-    <package name="classes">
+<coverage generated="1551492591104" clover="3.2.0">
+  <project timestamp="1551492591104" name="All files">
+    <metrics statements="224" coveredstatements="220" conditionals="96" coveredconditionals="90" methods="38" coveredmethods="37" elements="358" coveredelements="347" complexity="0" loc="224" ncloc="224" packages="17" files="33" classes="33"/>
+    <package name="app">
       <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="index.js" path="/Users/rebeccahu/Desktop/budgetApp/app/index.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="app.classes">
+      <metrics statements="8" coveredstatements="8" conditionals="4" coveredconditionals="4" methods="3" coveredmethods="3"/>
       <file name="classes.js" path="/Users/rebeccahu/Desktop/budgetApp/app/classes/classes.js">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="item.js" path="/Users/rebeccahu/Desktop/budgetApp/app/classes/item.js">
+        <metrics statements="8" coveredstatements="8" conditionals="4" coveredconditionals="4" methods="3" coveredmethods="3"/>
+        <line num="10" count="52" type="stmt"/>
+        <line num="12" count="52" type="stmt"/>
+        <line num="13" count="52" type="cond" truecount="4" falsecount="0"/>
+        <line num="14" count="4" type="stmt"/>
+        <line num="20" count="48" type="stmt"/>
+        <line num="21" count="636" type="stmt"/>
+        <line num="28" count="48" type="stmt"/>
+        <line num="29" count="179" type="stmt"/>
       </file>
       <file name="samples.js" path="/Users/rebeccahu/Desktop/budgetApp/app/classes/samples.js">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>
-    <package name="classes.account">
+    <package name="app.classes.account">
       <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="account.defaults.js" path="/Users/rebeccahu/Desktop/budgetApp/app/classes/account/account.defaults.js">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -25,7 +42,7 @@
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>
-    <package name="classes.bill">
+    <package name="app.classes.bill">
       <metrics statements="76" coveredstatements="76" conditionals="31" coveredconditionals="31" methods="8" coveredmethods="8"/>
       <file name="bill.defaults.js" path="/Users/rebeccahu/Desktop/budgetApp/app/classes/bill/bill.defaults.js">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -113,7 +130,7 @@
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>
-    <package name="classes.dashboard">
+    <package name="app.classes.dashboard">
       <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="dashboard.defaults.js" path="/Users/rebeccahu/Desktop/budgetApp/app/classes/dashboard/dashboard.defaults.js">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -128,8 +145,8 @@
         <line num="3" count="1" type="stmt"/>
       </file>
     </package>
-    <package name="classes.deposit">
-      <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+    <package name="app.classes.deposit">
+      <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="deposit.defaults.js" path="/Users/rebeccahu/Desktop/budgetApp/app/classes/deposit/deposit.defaults.js">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="4" count="9" type="stmt"/>
@@ -141,11 +158,18 @@
         <line num="12" count="14" type="stmt"/>
         <line num="13" count="10" type="stmt"/>
       </file>
+      <file name="deposit.options.js" path="/Users/rebeccahu/Desktop/budgetApp/app/classes/deposit/deposit.options.js">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="8" type="stmt"/>
+        <line num="4" count="8" type="stmt"/>
+        <line num="5" count="8" type="stmt"/>
+        <line num="6" count="8" type="stmt"/>
+      </file>
       <file name="deposit.samples.js" path="/Users/rebeccahu/Desktop/budgetApp/app/classes/deposit/deposit.samples.js">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>
-    <package name="classes.payment">
+    <package name="app.classes.payment">
       <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="payment.defaults.js" path="/Users/rebeccahu/Desktop/budgetApp/app/classes/payment/payment.defaults.js">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -159,7 +183,7 @@
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>
-    <package name="classes.state">
+    <package name="app.classes.state">
       <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="state.defaults.js" path="/Users/rebeccahu/Desktop/budgetApp/app/classes/state/state.defaults.js">
         <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -174,7 +198,13 @@
         <line num="4" count="2" type="stmt"/>
       </file>
     </package>
-    <package name="utils.dashboardHandler">
+    <package name="app.components">
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="index.js" path="/Users/rebeccahu/Desktop/budgetApp/app/components/index.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="app.utils.dashboardHandler">
       <metrics statements="21" coveredstatements="21" conditionals="13" coveredconditionals="10" methods="8" coveredmethods="8"/>
       <file name="dashboardHandler.js" path="/Users/rebeccahu/Desktop/budgetApp/app/utils/dashboardHandler/dashboardHandler.js">
         <metrics statements="21" coveredstatements="21" conditionals="13" coveredconditionals="10" methods="8" coveredmethods="8"/>
@@ -201,7 +231,7 @@
         <line num="61" count="1" type="stmt"/>
       </file>
     </package>
-    <package name="utils.generateDefaults">
+    <package name="app.utils.generateDefaults">
       <metrics statements="27" coveredstatements="27" conditionals="14" coveredconditionals="14" methods="3" coveredmethods="3"/>
       <file name="generateDefaults.js" path="/Users/rebeccahu/Desktop/budgetApp/app/utils/generateDefaults/generateDefaults.js">
         <metrics statements="27" coveredstatements="27" conditionals="14" coveredconditionals="14" methods="3" coveredmethods="3"/>
@@ -234,7 +264,7 @@
         <line num="64" count="10" type="stmt"/>
       </file>
     </package>
-    <package name="utils.getData">
+    <package name="app.utils.getData">
       <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
       <file name="getData.js" path="/Users/rebeccahu/Desktop/budgetApp/app/utils/getData/getData.js">
         <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
@@ -246,14 +276,14 @@
         <line num="25" count="2" type="stmt"/>
       </file>
     </package>
-    <package name="utils.i18next">
+    <package name="app.utils.i18next">
       <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="i18next.js" path="/Users/rebeccahu/Desktop/budgetApp/app/utils/i18next/i18next.js">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="6" count="13" type="stmt"/>
       </file>
     </package>
-    <package name="utils.processData">
+    <package name="app.utils.processData">
       <metrics statements="17" coveredstatements="16" conditionals="8" coveredconditionals="7" methods="2" coveredmethods="2"/>
       <file name="processData.js" path="/Users/rebeccahu/Desktop/budgetApp/app/utils/processData/processData.js">
         <metrics statements="17" coveredstatements="16" conditionals="8" coveredconditionals="7" methods="2" coveredmethods="2"/>
@@ -276,7 +306,7 @@
         <line num="38" count="4" type="stmt"/>
       </file>
     </package>
-    <package name="utils.stateHandler">
+    <package name="app.utils.stateHandler">
       <metrics statements="10" coveredstatements="7" conditionals="2" coveredconditionals="0" methods="4" coveredmethods="3"/>
       <file name="stateHandler.js" path="/Users/rebeccahu/Desktop/budgetApp/app/utils/stateHandler/stateHandler.js">
         <metrics statements="10" coveredstatements="7" conditionals="2" coveredconditionals="0" methods="4" coveredmethods="3"/>
@@ -292,7 +322,7 @@
         <line num="29" count="2" type="stmt"/>
       </file>
     </package>
-    <package name="utils.submitData">
+    <package name="app.utils.submitData">
       <metrics statements="9" coveredstatements="9" conditionals="6" coveredconditionals="6" methods="1" coveredmethods="1"/>
       <file name="submitData.js" path="/Users/rebeccahu/Desktop/budgetApp/app/utils/submitData/submitData.js">
         <metrics statements="9" coveredstatements="9" conditionals="6" coveredconditionals="6" methods="1" coveredmethods="1"/>
@@ -307,7 +337,7 @@
         <line num="33" count="1" type="stmt"/>
       </file>
     </package>
-    <package name="utils.validateData">
+    <package name="app.utils.validateData">
       <metrics statements="30" coveredstatements="30" conditionals="16" coveredconditionals="16" methods="2" coveredmethods="2"/>
       <file name="validateData.js" path="/Users/rebeccahu/Desktop/budgetApp/app/utils/validateData/validateData.js">
         <metrics statements="30" coveredstatements="30" conditionals="16" coveredconditionals="16" methods="2" coveredmethods="2"/>
@@ -341,6 +371,9 @@
         <line num="46" count="4" type="stmt"/>
         <line num="47" count="4" type="stmt"/>
         <line num="54" count="51" type="stmt"/>
+      </file>
+      <file name="validateData.samples.js" path="/Users/rebeccahu/Desktop/budgetApp/app/utils/validateData/validateData.samples.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       </file>
     </package>
   </project>

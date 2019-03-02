@@ -1,0 +1,95 @@
+{
+  "env": {
+    "jasmine": true,
+    "node": true,
+    "mocha": true,
+    "browser": true,
+    "builtin": true,
+    "es6": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 6
+  },
+  "rules": {
+    "comma-style": [
+      0,
+      "first"
+    ],
+    "curly": [
+      0,
+      "all"
+    ],
+    "dot-notation": [
+      0,
+      {
+        "allowKeywords": true
+      }
+    ],
+    "eqeqeq": [
+      0,
+      "allow-null"
+    ],
+    "global-strict": [
+      0,
+      "never"
+    ],
+    "new-cap": 0,
+    "no-caller": 2,
+    "no-cond-assign": [
+      0,
+      "except-parens"
+    ],
+    "no-debugger": 2,
+    "no-eval": 2,
+    "no-iterator": 2,
+    "no-loop-func": 0,
+    "no-multi-str": 2,
+    "no-new": 2,
+    "no-proto": 2,
+    "no-script-url": 2,
+    "no-sequences": 2,
+    "no-undef": 2,
+    "no-unused-vars": 0,
+    "no-with": 2,
+    "quotes": [
+      0,
+      "single"
+    ],
+    "semi": [
+      0,
+      "never"
+    ],
+    "wrap-iife": [
+      0,
+      "inside"
+    ]
+  },
+  "globals": {
+    "$": true,
+    "_": true,
+    "btoa": true,
+    "atob": true,
+    "require": true,
+    "exports": true,
+    "angular": true,
+    "console": true,
+    "alert": true,
+    "window": true,
+    "describe": true,
+    "ddescribe": true,
+    "beforeEach": true,
+    "it": true,
+    "iit": true,
+    "expect": true,
+    "jasmine": true,
+    "module": true,
+    "afterEach": true,
+    "inject": true,
+    "spyOn": true,
+    "UnionUtils": true,
+    "Highcharts": true,
+    "d3": true,
+    "document": true,
+    "google": true
+  }
+}
