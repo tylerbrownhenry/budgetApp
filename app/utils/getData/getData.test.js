@@ -10,7 +10,20 @@ describe('getData', () => {
   test('.loadStates(false) calls catch', () => {
     expect(getData.loadStates).toBeDefined();
     expect(typeof getData.loadStates).toEqual('function');
-    return expect(getData.loadStates()).rejects.toHaveProperty('error');
+    return expect(getData.loadStates()).rejects.toThrow(Error);
+  });
+
+  test('.loadStates(false) calls catch has error message', () => {
+    expect.assertions(3);
+    return getData.loadStates()
+      .catch((error) => {
+        const message = i18next.t('error.api.failed', {
+          details: "Something happened...",
+        });
+        expect(message).toEqual(error.message);
+        expect(message.length !== 0).toBeTruthy();
+        expect(message.indexOf('error.api.failed') === -1).toBeTruthy();
+      });
   });
 
   test('.loadStates(id) calls then', () => {

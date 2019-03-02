@@ -157,28 +157,12 @@
 <a name='L109'></a><a href='#L109'>109</a>
 <a name='L110'></a><a href='#L110'>110</a>
 <a name='L111'></a><a href='#L111'>111</a>
-<a name='L112'></a><a href='#L112'>112</a>
-<a name='L113'></a><a href='#L113'>113</a>
-<a name='L114'></a><a href='#L114'>114</a>
-<a name='L115'></a><a href='#L115'>115</a>
-<a name='L116'></a><a href='#L116'>116</a>
-<a name='L117'></a><a href='#L117'>117</a>
-<a name='L118'></a><a href='#L118'>118</a>
-<a name='L119'></a><a href='#L119'>119</a>
-<a name='L120'></a><a href='#L120'>120</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">9x</span>
+<a name='L112'></a><a href='#L112'>112</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -285,123 +269,115 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const allowedTypes = [
-    'fixed',
+  'fixed',
 ];
-const daysOfTheWeek = [0,1,2,3,4,5,6];
-const absoluteDates = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28];
+const daysOfTheWeek = [0, 1, 2, 3, 4, 5, 6];
+const absoluteDates = [];
 const relativeDates = [{
-    label: 'First of the month',
-    key: 'firstOfMonth'
+  label: 'First of the month',
+  key: 'firstOfMonth',
 },
 {
-    label: 'Last day of the month',
-    key: 'lastOfMonth'
-}];
+  label: 'Last day of the month',
+  key: 'lastOfMonth',
+},
+];
 &nbsp;
 export default {
-    options: {
-        schedules: 
-        [{
-            label: 'Monthly Deposit',
-            key: 'monthly',
-            options: [
-                {
-                    label: 'Day of month',
-                    key: 'dayOfMonth',
-                    options: [
-                        {
-                            label: 'Absolute Date',
-                            key: 'absolute',
-                            default: 1,
-                            options: absoluteDates
-                        },
-                        {
-                            label: 'Relative Date',
-                            key: 'relative',
-                            default: 'firstOfMonth',
-                            options: relativeDates
-                        }
-                    ]
-                }
-            ],
+  options: {
+    schedules: [{
+      label: 'Monthly Deposit',
+      key: 'monthly',
+      options: [{
+        label: 'Day of month',
+        key: 'dayOfMonth',
+        options: [{
+          label: 'Absolute Date',
+          key: 'absolute',
+          default: 1,
+          options: absoluteDates,
         },
         {
-            label: 'Twice a month',
-            key: 'twiceAmonth',
-            options: [
-                {
-                    label: 'Absolute Date',
-                    key: 'absolute',
-                    options: [
-                        {
-                            label: 'First Deposit',
-                            key: 'firstDeposit',
-                            default: 1,
-                            options: absoluteDates
-                        },
-                        {
-                            label: 'Second Deposit',
-                            key: 'secondDeposit',
-                            default: 15,
-                            options: absoluteDates
-                        }
-                    ]
-                },
-                {
-                    label: 'Relative Date',
-                    key: 'relative',
-                    options: [
-                        {
-                            label: 'First Deposit',
-                            key: 'firstDeposit',
-                            default: 'firstOfMonth',
-                            options: relativeDates
-                        },
-                        {
-                            label: 'Second Deposit',
-                            key: 'secondDeposit',
-                            default: 'lastOfMonth',
-                            options: relativeDates
-                        }
-                    ]
-                },
-            ]
+          label: 'Relative Date',
+          key: 'relative',
+          default: 'firstOfMonth',
+          options: relativeDates,
+        },
+        ],
+      }],
+    },
+    {
+      label: 'Twice a month',
+      key: 'twiceAmonth',
+      options: [{
+        label: 'Absolute Date',
+        key: 'absolute',
+        options: [{
+          label: 'First Deposit',
+          key: 'firstDeposit',
+          default: 1,
+          options: absoluteDates,
         },
         {
-            label: 'Every two weeks',
-            key: 'everyTwoWeek',
-            options: [
-                {
-                    label: 'Day of The Week',
-                    key: 'dayOfWeek',
-                    default: 'friday',
-                    options: daysOfTheWeek
-                },
-                {
-                    label: 'Next Deposit',
-                    key: 'nextDeposit',
-                    default: null,
-                    options: 'calendar'
-                },
-            ]
+          label: 'Second Deposit',
+          key: 'secondDeposit',
+          default: 15,
+          options: absoluteDates,
+        },
+        ],
+      },
+      {
+        label: 'Relative Date',
+        key: 'relative',
+        options: [{
+          label: 'First Deposit',
+          key: 'firstDeposit',
+          default: 'firstOfMonth',
+          options: relativeDates,
         },
         {
-            label: 'Every week',
-            key: 'weekly',
-            options: [
-                {
-                    label: 'Day of The Week',
-                    key: 'dayOfWeek',
-                    default: 'friday',
-                    options: daysOfTheWeek
-                }
-            ]
+          label: 'Second Deposit',
+          key: 'secondDeposit',
+          default: 'lastOfMonth',
+          options: relativeDates,
         },
-        {
-            label: 'Daily',
-            key: 'daily'
-        }]
-    }
+        ],
+      },
+      ],
+    },
+    {
+      label: 'Every two weeks',
+      key: 'everyTwoWeek',
+      options: [{
+        label: 'Day of The Week',
+        key: 'dayOfWeek',
+        default: 'friday',
+        options: daysOfTheWeek,
+      },
+      {
+        label: 'Next Deposit',
+        key: 'nextDeposit',
+        default: null,
+        options: 'calendar',
+      },
+      ],
+    },
+    {
+      label: 'Every week',
+      key: 'weekly',
+      options: [{
+        label: 'Day of The Week',
+        key: 'dayOfWeek',
+        default: 'friday',
+        options: daysOfTheWeek,
+      }],
+    },
+    {
+      label: 'Daily',
+      key: 'daily',
+    },
+    ],
+  },
 }
 &nbsp;</pre></td></tr>
 </table></pre>
@@ -409,7 +385,7 @@ export default {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sat Mar 02 2019 09:59:17 GMT-0500 (EST)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sat Mar 02 2019 17:32:00 GMT-0500 (EST)
 </div>
 </div>
 <script src="../../../prettify.js"></script>

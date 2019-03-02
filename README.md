@@ -111,3 +111,8 @@ VS code add beauitfy
   "command": "HookyQR.beautify",
   "when": "editorFocus"
 }
+
+
+
+
+./node_modules/.bin/jest getData

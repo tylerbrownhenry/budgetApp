@@ -1,5 +1,5 @@
 import i18next from 'i18next';
-import jest from 'jest';
+import 'jest';
 import stateHandler from './stateHandler';
 import getData from '../getData/getData';
 import state from '../../classes/state/state.samples';

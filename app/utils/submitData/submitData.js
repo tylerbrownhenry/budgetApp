@@ -24,11 +24,9 @@ export default {
       }
     }
 
-    let newItem
     /* Check initializing the class is valid */
     try {
-      newItem = new classes[options.class](options.values);
-      return newItem;
+      return new classes[options.class](options.values);
     } catch (e) {
       return e;
     }

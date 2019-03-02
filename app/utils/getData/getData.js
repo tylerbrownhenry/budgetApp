@@ -22,7 +22,7 @@ export default {
         resolve(data);
       } else {
         const error = i18next.t('error.api.failed', { details: "Something happened..." });
-        reject(new Error({ error }));
+        reject(new Error(error));
       }
     });
   },

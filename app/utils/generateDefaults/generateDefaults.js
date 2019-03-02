@@ -9,10 +9,7 @@ const functionName = i18next.t('error.file.generateDefaults.name');
 function checkKeyHasKey(setting) {
   if (!setting.key) {
     const required = i18next.t('parameter.key.name');
-    const error = i18next.t('error.function.missingArguments', { functionName, required });
-    return {
-      error,
-    };
+    return i18next.t('error.function.missingArguments', { functionName, required });
   }
   return false
 }

@@ -12,12 +12,14 @@ export default class Item {
       ...input,
     };
 
-    Object.keys(values).forEach(key => ({
-      get: () => values[key],
-      set: () => {
-        throw i18next.t('error.constructor.useSet');
-      },
-    }));
+    Object.keys(values).forEach(key => {
+      Object.defineProperty(this, key, {
+        get: () => values[key],
+        set: () => {
+          throw i18next.t('error.constructor.useSet');
+        }
+      });
+    });
 
     const validateResponse = validateData({
       values,
@@ -33,7 +35,7 @@ export default class Item {
      * @param  {string} property
      */
     this.set = (property, value) => {
-      values[property] = value
+      values[property] = value;
       return values[property];
     }
   }
