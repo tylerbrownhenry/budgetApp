@@ -8,16 +8,15 @@ import State from '../../classes/state/state';
  * and process the data for display
  * @param {string} id - Dashboard id
  */
-const init = function initilization(dashboard){
-        return new Promise((resolve, reject) => {
-            stateHandler.init(dashboard.id).then(data => {
-                dashboard.default = data.default;
-                resolve(data);
-            }).catch(reject);
-            // only function that will throw an error is 'getData'
-            // on the api call, and it will have an error
-            // with 'error' and 'details' as properties
-       });
+const init = function initilization(dashboard) {
+  return new Promise((resolve, reject) => {
+    stateHandler.init(dashboard.id).then((data) => {
+      resolve(data);
+    }).catch(reject);
+    // only function that will throw an error is 'getData'
+    // on the api call, and it will have an error
+    // with 'error' and 'details' as properties
+  });
 }
 
 /**
@@ -25,8 +24,8 @@ const init = function initilization(dashboard){
  * if none were saved, it sets first state to current
  * @param  {object} response
  */
-const findCurrentState = function findsCurrentState(response){
-    return response.defaultState ? response.defaultState : response.state[0];
+const findCurrentState = function findsCurrentState(r) {
+  return r.defaultState ? r.defaultState : r.state[0];
 }
 
 /**
@@ -35,37 +34,43 @@ const findCurrentState = function findsCurrentState(response){
  * @param  {object} response - response from api
  * @param  {function} resolve
  */
-const initDashboard = function initializedDashboard(dashboard, response, resolve){
+const initDashboard = function initializedDashboard(
+  dashboard,
+  response,
+  resolve,
+) {
+  let unsavedChanges = false;
+  if (response.state.length === 0) {
+    response.state.push(new State());
+    unsavedChanges = true;
+  }
 
-    if(response.state.length === 0){
-        response.state.push(new State());
-        dashboard.unsavedChanges = true;
-    }
+  const thisDash = new Dashboard({
+    name: dashboard.name,
+    id: dashboard.id,
+    currentState: findCurrentState(response),
+    states: response.state,
+    unsavedChanges,
+    messages: response.info ? [response.info] : [],
+  });
 
-    const thisDash = new Dashboard({
-        name: dashboard.name,
-        id: dashboard.id,
-        currentState: findCurrentState(response),
-        states: response.state,
-        unsavedChanges: !!dashboard.unsavedChanges,
-        messages: response.info ? [response.info] : []
-    });
-    
-    resolve(thisDash);
+  resolve(thisDash);
 }
 
 export default {
-    initDashboard,
-    findCurrentState,
-    init: (dashboard = { unsavedChanges: true })=>{
-        return new Promise((resolve, reject) => {
-            if(!dashboard || !dashboard.id){
-                initDashboard(dashboard, {state:[]}, resolve);
-            } else {
-                init(dashboard).then((response) => {
-                    initDashboard(dashboard, response, resolve);
-                }).catch(reject);
-            }
-        });
+  initDashboard,
+  findCurrentState,
+  init: (dashboard = {
+    unsavedChanges: true,
+  }) => new Promise((resolve, reject) => {
+    if (!dashboard || !dashboard.id) {
+      initDashboard(dashboard, {
+        state: [],
+      }, resolve);
+    } else {
+      init(dashboard).then((response) => {
+        initDashboard(dashboard, response, resolve);
+      }).catch(reject);
     }
+  }),
 }

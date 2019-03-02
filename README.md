@@ -101,3 +101,13 @@ Output
 
 
 
+Add 
+
+
+VS code add beauitfy
+
+{
+  "key": "cmd+b",
+  "command": "HookyQR.beautify",
+  "when": "editorFocus"
+}

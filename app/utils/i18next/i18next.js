@@ -4,150 +4,150 @@ import i18next from 'i18next';
 *  Sets languages/text in a central location and prepares for translation later
 */
 i18next.init({
-    lng: 'en',
-    debug: false,
-    resources: {
-      en: {
-        translation: {
-            "defaultName": 'New {{label}}',
-            "info" :{
-                "data": {
-                    "none": {
-                        "saved": "No saved {items}"
-                    }
-                }
+  lng: 'en',
+  debug: false,
+  resources: {
+    en: {
+      translation: {
+        defaultName: 'New {{label}}',
+        info: {
+          data: {
+            none: {
+              saved: "No saved {items}",
             },
-            "error": {
-                "api":{
-                    "failed": `Error fetching data: [{{details}}]`
-                },
-                "constructor":{
-                    "missingArguments": `{{functionName}} requires [{{required}}]'`,
-                    "useSet": `Use 'set' method when editing property values`
-                },
-                "function":{
-                    "missingArguments": `{{functionName}} called missing required argument(s) [{{required}}]'`
-                },
-                "class": {
-                    "missing": `Class "{{class}}" does not exist`
-                },
-                "array": {
-                    "isNot": `Provided "{{item}}" is/are not an Array(s)`
-                },
-                "file": {
-                    "validateData": {
-                        "name": "Validate Data"
-                    },
-                    "submitData": {
-                        "name": "Submit Data"
-                    },
-                    "generateDefaults": {
-                        "name": "Generate Defaults"
-                    }
-                }
+          },
+        },
+        error: {
+          api: {
+            failed: `Error fetching data: [{{details}}]`,
+          },
+          constructor: {
+            missingArguments: `{{functionName}} requires [{{required}}]'`,
+            useSet: `Use 'set' method when editing property values`,
+          },
+          function: {
+            missingArguments: `{{functionName}} called missing required argument(s) [{{required}}]'`,
+          },
+          class: {
+            missing: `Class "{{class}}" does not exist`,
+          },
+          array: {
+            isNot: `Provided "{{item}}" is/are not an Array(s)`,
+          },
+          file: {
+            validateData: {
+              name: "Validate Data",
             },
-            "example":{
-                "dashboard": [
-                    {
-                        "name": "Family Account"
-                    },
-                    {
-                        "name": "My Account"
-                    }
-                ],  
-                "state": [
-                    {
-                        "name": "Family Bills"
-                    },
-                    {
-                        "name": "My Bills"
-                    }
-                ],  
-                "deposit": [
-                    {
-                        "name": "Bank of America Desposit"
-                    }
-                ],
-                "payment": [
-                    {
-                        "name": "Chase Credit Card Payment"
-                    }
-                ],
-                "bill": [
-                    {
-                        "name":'High Balance Credit Card',
-                    },
-                    {
-                        "name":'Credit Card with Low Balance but more periods',
-                    },
-                    {
-                        "name":'Credit Card with Low Balance but even more periods',
-                    },
-                    {
-                        "name":'Credit Card with Low Balance but high apr',
-                    },
-                    {
-                        "name":'Credit Card with 2 payments',
-                    },
-                    {
-                        "name":'Credit Card with last payment',
-                    },
-                    {
-                        "name": 'Credit Card with type 1 payment and no payment set'
-                    }
-                ],
-                "account":[
-                    {
-                        "name": "Chase Credit Card"
-                    },
-                    {
-                        "name": "Bank of America Checking"
-                    }
-                ]
+            submitData: {
+              name: "Submit Data",
             },
-            "class":{
-                "dashboard": {
-                    "name": "Dashboard"
-                },
-                "state": {
-                    "name": "State"
-                },
-                "deposit": {
-                    "name":"Deposit"
-                },
-                "account": {
-                    "name":"Account"
-                },
-                "payment": {
-                    "name":"Payment"
-                },
-                "bill": {
-                    "name":"Bill"
-                }
+            generateDefaults: {
+              name: "Generate Defaults",
             },
-            "parameter": {
-                "option": {
-                    "name": "option"
-                },
-                "settings": {
-                    "name": "settings"
-                },
-                "class": {
-                    "name": "class"
-                },
-                "required": {
-                    "name": "required"
-                },
-                "values": {
-                    "name": "values"
-                },
-                "key": {
-                    "name": "key"
-                }
-            }
-        }
-      }
-    }
-  });
+          },
+        },
+        example: {
+          dashboard: [
+            {
+              name: "Family Account",
+            },
+            {
+              name: "My Account",
+            },
+          ],
+          state: [
+            {
+              name: "Family Bills",
+            },
+            {
+              name: "My Bills",
+            },
+          ],
+          deposit: [
+            {
+              name: "Bank of America Desposit",
+            },
+          ],
+          payment: [
+            {
+              name: "Chase Credit Card Payment",
+            },
+          ],
+          bill: [
+            {
+              name: 'High Balance Credit Card',
+            },
+            {
+              name: 'Credit Card with Low Balance but more periods',
+            },
+            {
+              name: 'Credit Card with Low Balance but even more periods',
+            },
+            {
+              name: 'Credit Card with Low Balance but high apr',
+            },
+            {
+              name: 'Credit Card with 2 payments',
+            },
+            {
+              name: 'Credit Card with last payment',
+            },
+            {
+              name: 'Credit Card with type 1 payment and no payment set',
+            },
+          ],
+          account: [
+            {
+              name: "Chase Credit Card",
+            },
+            {
+              name: "Bank of America Checking",
+            },
+          ],
+        },
+        class: {
+          dashboard: {
+            name: "Dashboard",
+          },
+          state: {
+            name: "State",
+          },
+          deposit: {
+            name: "Deposit",
+          },
+          account: {
+            name: "Account",
+          },
+          payment: {
+            name: "Payment",
+          },
+          bill: {
+            name: "Bill",
+          },
+        },
+        parameter: {
+          option: {
+            name: "option",
+          },
+          settings: {
+            name: "settings",
+          },
+          class: {
+            name: "class",
+          },
+          required: {
+            name: "required",
+          },
+          values: {
+            name: "values",
+          },
+          key: {
+            name: "key",
+          },
+        },
+      },
+    },
+  },
+});
 
-  export default i18next;
+export default i18next;

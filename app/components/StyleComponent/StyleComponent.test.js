@@ -1,8 +1,8 @@
 import React from 'react';
 import StyleComponent from './StyleComponent';
 
-describe('StyleComponent Component', function() {
-    it('exists', function() {
-        expect(StyleComponent).toBeDefined();
-    });
+describe('StyleComponent Component', () => {
+  it('exists', () => {
+    expect(StyleComponent).toBeDefined();
+  });
 });

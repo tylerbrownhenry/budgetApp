@@ -6,9 +6,9 @@ import payment from './payment/payment.samples';
 import state from './state/state.samples';
 
 export default {
-    deposit,
-    bill,
-    account,
-    payment,
-    state,
+  deposit,
+  bill,
+  account,
+  payment,
+  state,
 }

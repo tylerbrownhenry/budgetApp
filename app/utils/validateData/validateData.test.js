@@ -1,35 +1,36 @@
+import i18next from 'i18next';
 import validateData from './validateData';
 import data from './validateData.samples';
-const {samples, defaults} = data;
 import classes from '../../classes/classes';
-const {Deposit} = classes;
-import i18next from 'i18next';
+
+const { samples, defaults } = data;
+const { Deposit } = classes;
 
 test('validateData is defined', () => {
-    expect(validateData).toBeDefined();
-    expect(typeof validateData).toEqual('function');
+  expect(validateData).toBeDefined();
+  expect(typeof validateData).toEqual('function');
 });
 
 test('validateData called with not arguments returns an error', () => {
-    const validateResponse = validateData();
-    expect(validateResponse).toHaveProperty('error');
-    const functionName = i18next.t('error.file.validateData.name');
-    const required = i18next.t('parameter.option.name');
-    const errorMessage = i18next.t('error.function.missingArguments', {functionName, required});
-    expect(errorMessage).toBeDefined();
-    expect(validateResponse.error).toEqual(errorMessage);
+  const validateResponse = validateData();
+  expect(validateResponse).toHaveProperty('error');
+  const functionName = i18next.t('error.file.validateData.name');
+  const required = i18next.t('parameter.option.name');
+  const errorMessage = i18next.t('error.function.missingArguments', { functionName, required });
+  expect(errorMessage).toBeDefined();
+  expect(validateResponse.error).toEqual(errorMessage);
 });
 
 test('validateData called with invalid class returns an error (developer notes)', () => {
-    const validateResponse = validateData({values:{},required: 'shouldBeAnArray'});
-    expect(validateResponse).toHaveProperty('error');
+  const validateResponse = validateData({ values: {}, required: 'shouldBeAnArray' });
+  expect(validateResponse).toHaveProperty('error');
 });
 
 test('validateData throws error when creating new Deposit with no account', () => {
-    try{
-        let newDeposit = new Deposit();
-    } catch(e){
-        expect(e.error).toBeDefined();
-        expect(e.required).toBeDefined();
-    }
+  try {
+    const newDeposit = new Deposit();
+  } catch (e) {
+    expect(e.error).toBeDefined();
+    expect(e.required).toBeDefined();
+  }
 });

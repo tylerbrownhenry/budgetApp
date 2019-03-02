@@ -6,10 +6,10 @@ import State from './state/state';
 import Dashboard from './dashboard/dashboard';
 
 export default {
-    Deposit,
-    Bill,
-    Account,
-    Payment,
-    State,
-    Dashboard
+  Deposit,
+  Bill,
+  Account,
+  Payment,
+  State,
+  Dashboard,
 }

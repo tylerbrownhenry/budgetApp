@@ -4,4 +4,4 @@ import { hot } from 'react-hot-loader';
 
 const ButtonExampleButton = () => <Button>Click Here</Button>
 
-export default hot(module)(ButtonExampleButton) 
+export default hot(module)(ButtonExampleButton)
