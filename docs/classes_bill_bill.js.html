@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>classes/bill/bill.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="module.html#.exports">exports</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module.html#.exports#.convert">convert</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module.html#.exports#.init">init</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module.html#.exports#.loadStates">loadStates</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module.html#.exports#.submit">submit</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module.html#.exports#estimateNumberOfPayments">estimateNumberOfPayments</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module.html#.exports#estimatePayment">estimatePayment</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module.html#.exports#runAutoCalcs">runAutoCalcs</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module.html#.exports#set">set</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module.html#.exports#setInterestRate">setInterestRate</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module.html#.exports#setPayment">setPayment</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="module.html#.exports#setPeriods">setPeriods</a></span></li><li class="nav-heading"><a href="global.html">Globals</a></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#checkKeyHasKey">checkKeyHasKey</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#findCurrentState">findCurrentState</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#init">init</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="global.html#process">process</a></span></li>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">classes/bill/bill.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import Item from '../item';
+import data from './bill.defaults';
+const {defaults, required} = data;
+
+/**
+ * Creates a new Bill
+ * @class
+ */
+export default class Bill extends Item {
+    constructor(input) {
+        super(input, defaults, required);
+        this.set('apr', this.get('apr') / 100);
+        const superSet = super.set;
+        const effectsCalcs = [
+            'apr',
+            'payment',
+            'balance',
+            'periods'
+        ];
+
+        const effectsPeriods = [
+            'balance',
+            'apr',
+            'payment'
+        ];
+
+        const effectsPayment = [
+            'apr',
+            'periods'
+        ];
+
+        this._set = this.set; // Keeping super.set
+        
+        /**
+         * Setter
+         * @param  {string} prop
+         * @param  {string|number} value
+         */
+        this.set = (prop, value) =>{
+            if(prop === 'apr'){
+                value = value / 100;
+            }
+            this._set(prop, value);
+            if(effectsCalcs.indexOf(prop) !== -1){
+                const calcPayment = effectsPayment.indexOf(prop) !== -1;
+                const calcPeriods = effectsPeriods.indexOf(prop) !== -1;
+                this.runAutoCalcs(calcPeriods, calcPayment);
+            }
+            return this.get(prop);
+        };
+
+        /**
+         * Given balance and payment, calculates the number of payments needs,
+         * and returns amortization of all payments over time
+         */
+        this.estimateNumberOfPayments = () => {
+            let balance = this.get('balance');
+            const payment = this.get('payment');
+            const apr = this.get('apr');
+
+            if(balance &lt;= 0 || !payment){
+                return {
+                    payments: null,
+                    amortization: []
+                };    
+            }
+
+            let i = 0;
+            let fixedPayment = payment.toFixed(2);
+            let totalBalance;
+            let amortization = [];
+            let startBalance;
+            const interestRate = Math.pow(1 + (apr / 12), 1);
+
+            while (balance > 0 &amp;&amp; i &lt; 360) {
+                startBalance = balance;
+                totalBalance = balance * interestRate;
+                let interest =  totalBalance - balance;
+                if (fixedPayment === totalBalance.toFixed(2)) {
+                    balance -= fixedPayment;
+                } else {
+                    balance -= fixedPayment - interest;            
+                } 
+                amortization.push({
+                    principle: (payment - interest).toFixed(2),
+                    interest: interest.toFixed(2),
+                    start: startBalance.toFixed(2),
+                    end: balance.toFixed(2),
+                    month: i + 1,
+                });
+                i++;
+            }   
+            return {
+                payments: amortization.length,
+                amortization
+            };         
+        }
+
+        /**
+         * Checks if can auto calculate numnber of periods
+         */
+        this.setPeriods = (calcPeriods)=> {
+            const periods = this.get('periods');
+            if(periods === null || calcPeriods){
+                const resp = this.estimateNumberOfPayments();
+                this._set('periods', resp.payments);
+                this._set('amorization', resp.amortization);
+            }
+            return this.get('periods');
+        }
+
+        /**
+         *  Calculates monthly interest rate
+         */
+        this.setInterestRate = () => {
+            const apr = this.get('apr')
+            return this._set('interestRate', apr / 12);
+        }
+
+        /**
+         *  Checks if can auto calculate monthly payment
+         */
+        this.setPayment = (calcPayment) => {
+            const periods = this.get('periods');
+            const balance = this.get('balance');
+            const payment = this.get('payment');
+            const initValue = periods &amp;&amp; balance &amp;&amp; !payment;
+            if(initValue || calcPayment){
+                this._set('payment', this.estimatePayment());
+            }
+            return this.get('payment');
+        }
+       
+        /**
+         * Given number of interest rate, number of periods 
+         * and balance, returns amount of a monthly payment
+         */
+        this.estimatePayment = () => {
+            let payment;
+            const interestRate = this.get('interestRate');
+            const futureValue = this.get('futureValue');
+            const periods = this.get('periods');
+            const balance = this.get('balance');
+            const type = this.get('type');
+         
+            if (!interestRate){
+                return (balance + futureValue) / periods;
+            }
+
+            const interest = Math.pow(1 + interestRate, periods);
+            payment = -interestRate * balance * (interest + futureValue) / (interest - 1);
+
+            if (type === 1){
+                payment /= (1 + interestRate);
+            }
+
+            return payment.toFixed(2) * -1;
+        }
+
+        /**
+         * Calculates monthly interest rate
+         * Auto Caluculates periods if given payment and balance
+         * Auto Caluculates payment if given balance and periods
+         */
+        this.runAutoCalcs = (calcPeriods, calcPayment) => {
+            this.setPeriods(calcPeriods);
+            const interestRate = this.get('interestRate') !== this.setInterestRate();
+            const payment = this.get('payment') !== this.setPayment(calcPayment);
+            if(!payment || !interestRate){
+                /*
+                If interestRate or payment was changed, redo periods
+                */
+                this.setPeriods(calcPeriods);               
+            }
+            return this.get('interestRate');
+        }
+
+        this.runAutoCalcs(true);
+    }
+};</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri Mar 01 2019 22:26:58 GMT-0500 (EST) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

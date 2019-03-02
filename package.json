@@ -6,7 +6,9 @@
   "scripts": {
     "hot": "webpack-dev-server --hot",
     "build": "webpack --config webpack.config.js",
-    "test": "jest"
+    "test": "jest",
+    "docs": "node_modules/.bin/jsdoc app/**/**/**.js -t node_modules/minami --destination docs",
+    "eslint": "./node_modules/.bin/eslint app/**/**.js"
   },
   "jest": {
     "collectCoverage": true,
@@ -38,6 +40,7 @@
     "@babel/polyfill": "^7.2.5",
     "@babel/preset-env": "^7.3.4",
     "@babel/preset-react": "^7.0.0",
+    "babel-eslint": "^10.0.1",
     "babel-jest": "^24.0.0",
     "babel-loader": "^8.0.5",
     "babel-plugin-styled-components": "^1.10.0",
@@ -48,7 +51,7 @@
     "concat-cli": "^4.0.0",
     "concat-stream": "^2.0.0",
     "dotenv": "^6.2.0",
-    "eslint": "^5.13.0",
+    "eslint": "^5.3.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-jsx-a11y": "^6.2.1",

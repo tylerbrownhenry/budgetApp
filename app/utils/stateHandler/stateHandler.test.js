@@ -1,19 +1,23 @@
 import stateHandler from './stateHandler';
 import i18next from 'i18next';
-import getData from '../getData/getData';
+jest.mock('../getData/getData');
+import getData from '../getData/getData'; 
+import state from '../../classes/state/state.samples';
 
-test('stateHandler is defined', () => {
-    expect(stateHandler).toBeDefined();
-    expect(typeof stateHandler).toEqual('object');
-});
+describe('stateHandler nested functions',()=>{
+    beforeEach(() => {
+        getData.loadStates.mockReturnValue(Promise.resolve({results:state}));
+    });
+    
+    test('stateHandler.init(id) with mocked data will return a default state', () => {
+        expect.assertions(1);
+        return stateHandler.init({id:123}).then((response)=>{
+            console.log('response',response);
+            return expect(response.state[1].get('id')).toEqual(response.defaultState);
+        });
+    });
 
-test('stateHandler.init(false) calls catch', () => {
-    expect(stateHandler.init).toBeDefined();
-    expect(typeof stateHandler.init).toEqual('function');
-    return expect(stateHandler.init()).rejects.toHaveProperty('error');
-});
-
-test('stateHandler.init(id) calls then', () => {
-    let id = 123;
-    return expect(stateHandler.init(id)).resolves.toHaveProperty('info');
+    afterEach(() => {
+        jest.unmock('../getData/getData');
+    });
 });

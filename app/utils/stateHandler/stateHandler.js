@@ -10,8 +10,8 @@ const {State} = classes;
  * @param  {object} state
  */
 const process = function processDataItemFunction(response, state){
-    if(state.default){
-        response.defaultState = state.id;
+    if(state.get('default')){
+        response.defaultState = state.get('id')
     }
     return response;
 }
@@ -24,7 +24,6 @@ export default {
     init: function initStateHandler(id){
         return new Promise(function(resolve, reject) {
             getData.loadStates(id).then(data => {
-                console.log('data',data);
                 const className = i18next.t('classes.state.name');
                 return processData.convert(data.results, State, className, 'state', resolve, reject, process);
             }).catch(reject);

@@ -8,8 +8,11 @@
     "es6": true
   },
   "parserOptions": {
+    "sourceType": "module",
     "ecmaVersion": 6
   },
+  "extends": "airbnb",
+  "parser": "babel-eslint",
   "rules": {
     "comma-style": [
       0,

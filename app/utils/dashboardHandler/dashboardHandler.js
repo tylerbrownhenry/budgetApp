@@ -10,9 +10,6 @@ import State from '../../classes/state/state';
  */
 const init = function initilization(dashboard){
         return new Promise((resolve, reject) => {
-            if(!dashboard.id){
-
-            }
             stateHandler.init(dashboard.id).then(data => {
                 dashboard.default = data.default;
                 resolve(data);
@@ -22,6 +19,7 @@ const init = function initilization(dashboard){
             // with 'error' and 'details' as properties
        });
 }
+
 /**
  * Sets default state to current
  * if none were saved, it sets first state to current
@@ -31,8 +29,14 @@ const findCurrentState = function findsCurrentState(response){
     return response.defaultState ? response.defaultState : response.state[0];
 }
 
+/**
+ * Returns a dashboard object, with the initial state set
+ * @param  {object} dashboard - dashboard data
+ * @param  {object} response - response from api
+ * @param  {function} resolve
+ */
 const initDashboard = function initializedDashboard(dashboard, response, resolve){
-    console.log('VERY LOUD',response);
+
     if(response.state.length === 0){
         response.state.push(new State());
         dashboard.unsavedChanges = true;
@@ -47,11 +51,12 @@ const initDashboard = function initializedDashboard(dashboard, response, resolve
         messages: response.info ? [response.info] : []
     });
     
-    console.log('thisDash',thisDash.get('states'));
     resolve(thisDash);
 }
 
 export default {
+    initDashboard,
+    findCurrentState,
     init: (dashboard = { unsavedChanges: true })=>{
         return new Promise((resolve, reject) => {
             if(!dashboard || !dashboard.id){
