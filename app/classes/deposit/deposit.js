@@ -1,6 +1,6 @@
-import data from './deposit.samples';
-import options from './deposit.options';
 import Item from '../item';
+import options from './deposit.options';
+import data from './deposit.defaults';;
 const {defaults, required} = data;
 
 /**

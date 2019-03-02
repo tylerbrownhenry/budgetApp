@@ -1,4 +1,5 @@
 import i18next from '../i18next/i18next';
+const functionName = i18next.t('error.file.generateDefaults.name');
 
 /**
  * Checks that setting has required property 'key'
@@ -6,9 +7,8 @@ import i18next from '../i18next/i18next';
  */
 function checkKeyHasKey(setting){
     if(!setting.key) {
-        const required = i18next.t('parameters.key.name');
-        const functionName = i18next.t('namesFunctionGenerateDefaults');
-        const error = i18next.t('functionMissingArguments', { functionName, required} );
+        const required = i18next.t('parameter.key.name');
+        const error = i18next.t('error.function.missingArguments', { functionName, required} );
         return {
              error
         };
@@ -21,17 +21,16 @@ function checkKeyHasKey(setting){
  */
 export default (settings) =>{
     if(!settings) {
-        const functionName = i18next.t('namesFunctionGenerateDefaults');
-        const required = i18next.t('namesParameterNameSetttings');
-        const error = i18next.t('functionMissingArguments', { functionName, required });
+        const required = i18next.t('parameter.settings.name');
+        const error = i18next.t('error.function.missingArguments', { functionName, required });
         return {
             error
         };
     }
 
     if(typeof settings !== 'object') {
-        const required = i18next.t('namesParameterNameSetttings');
-        const error = i18next.t('notAnArray', { item: required});
+        const required = i18next.t('parameter.settings.name');
+        const error = i18next.t('error.array.isNot', { item: required});
         return {
              error
         };

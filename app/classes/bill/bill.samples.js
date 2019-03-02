@@ -1,22 +1,9 @@
 import i18next from '../../utils/i18next/i18next';
 
-export default {
-    /* Defaults */
-    defaults:{ 
-        name:  i18next.t('defaultName', i18next.t('depositName')),
-        id: null, //automatically generated hash
-        type: 0,
-        balance: null,
-        apr: 0,
-        payment: null,
-        periods: null,
-        amortization: [],
-        futureValue: 0,
-        interestRate: 0,
-    },
+export default [
     /* Sample Data */
-    samples: [{
-        name: i18next.t('sampleBillName'),
+    {
+        name: i18next.t('example.bill[0].name'),
         id: '456',
         apr: 7,
         type: 1,
@@ -24,7 +11,7 @@ export default {
         payment: 93.58,
         periods: 12,
     },{
-        name: i18next.t('sampleBillName2'),
+        name: i18next.t('example.bill[1].name'),
         id: '678',
         apr: 7,
         type: 1,
@@ -33,7 +20,7 @@ export default {
         periods: 16
     },
     {
-        name: i18next.t('sampleBillName3'),
+        name: i18next.t('example.bill[2].name'),
         id: '342',
         apr: 7,
         type: 1,
@@ -42,7 +29,7 @@ export default {
         periods: 20
     },
     {
-        name: i18next.t('sampleBillName4'),
+        name: i18next.t('example.bill[3].name'),
         id: '435',
         apr: 7,
         type: 1,
@@ -51,7 +38,7 @@ export default {
         periods: 20
     },
     {
-        name: i18next.t('sampleBillName5'),
+        name: i18next.t('example.bill[4].name'),
         id: '673',
         balance: 1000,
         apr: 8.9,
@@ -60,7 +47,7 @@ export default {
         periods: 22
     },
     {
-        name: i18next.t('sampleBillName6'),
+        name: i18next.t('example.bill[5].name'),
         id: '111',
         balance: 1100,
         apr: 8.9,
@@ -69,7 +56,7 @@ export default {
         periods: 2
     },
     {
-        name: i18next.t('sampleBillName7'),
+        name: i18next.t('example.bill[6].name'),
         id: '775',
         balance: 1000,
         apr: 8.9,
@@ -78,26 +65,10 @@ export default {
         periods: 1
     },
     {
-        name: i18next.t('sampleBillName8'),
+        name: i18next.t('example.bill[7].name'),
         id: '342',
         balance: 1000,
         apr: 8.9,
         type: 1
-    }],
-    amortization: {
-        first:{ 
-            principle: '87.75',
-            interest: '5.83',
-            start: '1000.00',
-            end: '912.25',
-            month: 1 
-        },
-        last:{ 
-            principle: '93.54',
-            interest: '0.04',
-            start: '6.14',
-            end: '-87.41',
-            month: 12
-        }
     }
-};
+];

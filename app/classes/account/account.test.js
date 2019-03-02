@@ -1,6 +1,7 @@
 import Account from './account';
-import data from './account.samples';
-const {defaults, samples} = data;
+import samples from './account.samples';
+import data from './account.defaults';
+const {defaults, required} = data;
 
 test('Account is defined', () => {
   expect(Account).toBeDefined();

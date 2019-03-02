@@ -119,65 +119,7 @@
 <a name='L71'></a><a href='#L71'>71</a>
 <a name='L72'></a><a href='#L72'>72</a>
 <a name='L73'></a><a href='#L73'>73</a>
-<a name='L74'></a><a href='#L74'>74</a>
-<a name='L75'></a><a href='#L75'>75</a>
-<a name='L76'></a><a href='#L76'>76</a>
-<a name='L77'></a><a href='#L77'>77</a>
-<a name='L78'></a><a href='#L78'>78</a>
-<a name='L79'></a><a href='#L79'>79</a>
-<a name='L80'></a><a href='#L80'>80</a>
-<a name='L81'></a><a href='#L81'>81</a>
-<a name='L82'></a><a href='#L82'>82</a>
-<a name='L83'></a><a href='#L83'>83</a>
-<a name='L84'></a><a href='#L84'>84</a>
-<a name='L85'></a><a href='#L85'>85</a>
-<a name='L86'></a><a href='#L86'>86</a>
-<a name='L87'></a><a href='#L87'>87</a>
-<a name='L88'></a><a href='#L88'>88</a>
-<a name='L89'></a><a href='#L89'>89</a>
-<a name='L90'></a><a href='#L90'>90</a>
-<a name='L91'></a><a href='#L91'>91</a>
-<a name='L92'></a><a href='#L92'>92</a>
-<a name='L93'></a><a href='#L93'>93</a>
-<a name='L94'></a><a href='#L94'>94</a>
-<a name='L95'></a><a href='#L95'>95</a>
-<a name='L96'></a><a href='#L96'>96</a>
-<a name='L97'></a><a href='#L97'>97</a>
-<a name='L98'></a><a href='#L98'>98</a>
-<a name='L99'></a><a href='#L99'>99</a>
-<a name='L100'></a><a href='#L100'>100</a>
-<a name='L101'></a><a href='#L101'>101</a>
-<a name='L102'></a><a href='#L102'>102</a>
-<a name='L103'></a><a href='#L103'>103</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L74'></a><a href='#L74'>74</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -252,23 +194,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import i18next from '../../utils/i18next/i18next';
 &nbsp;
-export default {
-    /* Defaults */
-    defaults:{ 
-        name:  i18next.t('defaultName', i18next.t('depositName')),
-        id: null, //automatically generated hash
-        type: 0,
-        balance: null,
-        apr: 0,
-        payment: null,
-        periods: null,
-        amortization: [],
-        futureValue: 0,
-        interestRate: 0,
-    },
+export default [
     /* Sample Data */
-    samples: [{
-        name: i18next.t('sampleBillName'),
+    {
+        name: i18next.t('example.bill[0].name'),
         id: '456',
         apr: 7,
         type: 1,
@@ -276,7 +205,7 @@ export default {
         payment: 93.58,
         periods: 12,
     },{
-        name: i18next.t('sampleBillName2'),
+        name: i18next.t('example.bill[1].name'),
         id: '678',
         apr: 7,
         type: 1,
@@ -285,7 +214,7 @@ export default {
         periods: 16
     },
     {
-        name: i18next.t('sampleBillName3'),
+        name: i18next.t('example.bill[2].name'),
         id: '342',
         apr: 7,
         type: 1,
@@ -294,7 +223,7 @@ export default {
         periods: 20
     },
     {
-        name: i18next.t('sampleBillName4'),
+        name: i18next.t('example.bill[3].name'),
         id: '435',
         apr: 7,
         type: 1,
@@ -303,7 +232,7 @@ export default {
         periods: 20
     },
     {
-        name: i18next.t('sampleBillName5'),
+        name: i18next.t('example.bill[4].name'),
         id: '673',
         balance: 1000,
         apr: 8.9,
@@ -312,7 +241,7 @@ export default {
         periods: 22
     },
     {
-        name: i18next.t('sampleBillName6'),
+        name: i18next.t('example.bill[5].name'),
         id: '111',
         balance: 1100,
         apr: 8.9,
@@ -321,7 +250,7 @@ export default {
         periods: 2
     },
     {
-        name: i18next.t('sampleBillName7'),
+        name: i18next.t('example.bill[6].name'),
         id: '775',
         balance: 1000,
         apr: 8.9,
@@ -330,35 +259,19 @@ export default {
         periods: 1
     },
     {
-        name: i18next.t('sampleBillName8'),
+        name: i18next.t('example.bill[7].name'),
         id: '342',
         balance: 1000,
         apr: 8.9,
         type: 1
-    }],
-    amortization: {
-        first:{ 
-            principle: '87.75',
-            interest: '5.83',
-            start: '1000.00',
-            end: '912.25',
-            month: 1 
-        },
-        last:{ 
-            principle: '93.54',
-            interest: '0.04',
-            start: '6.14',
-            end: '-87.41',
-            month: 12
-        }
     }
-};</pre></td></tr>
+];</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Feb 28 2019 02:38:47 GMT-0500 (EST)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Mar 01 2019 18:59:25 GMT-0500 (EST)
 </div>
 </div>
 <script src="../../prettify.js"></script>

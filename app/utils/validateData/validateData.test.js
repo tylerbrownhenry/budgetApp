@@ -13,9 +13,9 @@ test('validateData is defined', () => {
 test('validateData called with not arguments returns an error', () => {
     const validateResponse = validateData();
     expect(validateResponse).toHaveProperty('error');
-    const functionName = i18next.t('namesFunctionValidateData');
-    const required = i18next.t('parameters.option.name');
-    const errorMessage = i18next.t('functionMissingArguments', {functionName, required});
+    const functionName = i18next.t('error.file.validateData.name');
+    const required = i18next.t('parameter.option.name');
+    const errorMessage = i18next.t('error.function.missingArguments', {functionName, required});
     expect(errorMessage).toBeDefined();
     expect(validateResponse.error).toEqual(errorMessage);
 });

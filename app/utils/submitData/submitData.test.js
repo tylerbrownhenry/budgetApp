@@ -11,7 +11,7 @@ test('submitData called with not arguments returns an error', () => {
 
 test('submitData called with invalid class throws an error', () => {
     const validateResponse = submitData.submit({
-        class: 'doesNotExist',
+        class: 'thisClassDoesNotExist',
         values: {}
     });
     expect(validateResponse).toHaveProperty('error');

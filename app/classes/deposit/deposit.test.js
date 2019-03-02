@@ -1,6 +1,7 @@
 import Deposit from './deposit';
-import data from './deposit.samples';
-const {defaults, samples} = data;
+import samples from './deposit.samples';
+import data from './deposit.defaults';
+const {defaults, required} = data;
 
 test('Deposit is defined', () => {
     expect(Deposit).toBeDefined();

@@ -1,5 +1,5 @@
-import data from './payment.samples';
 import Item from '../item';
+import data from './payment.defaults';
 const {defaults, required} = data;
 
 /**

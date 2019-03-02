@@ -1,5 +1,5 @@
 import Item from '../item';
-import data from './account.samples';
+import data from './account.defaults';
 const {defaults, required} = data;
 
 /**

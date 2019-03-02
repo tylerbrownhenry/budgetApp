@@ -9,60 +9,141 @@ i18next.init({
     resources: {
       en: {
         translation: {
-            "depositName": 'Deposit',
-            "paymentName": "Payment",
-            "billName": "Bill",
-            "accountName": 'Bank',
-            "defaultName": 'Unnamed {{label}}',
-            "samplePaymentName": "Chase Credit Card Payment",
-            "sampleDepositName": "Bank of America Desposit",
-            "sampleBillName": "Power Bill",
-            "sampleBillName2": 'High Balance Credit Card',
-            "sampleBillName3": 'Credit Card with Low Balance but more periods',
-            "sampleBillName4": 'Credit Card with Low Balance but even more periods',
-            "sampleBillName5": 'Credit Card with Low Balance but high apr',
-            "sampleBillName6": 'Credit Card with 2 payments',
-            "sampleBillName7": 'Credit Card with last payment',
-            "sampleBillName7": 'Credit Card with type 1 payment and no payment set',
-            "sampleAccountName": 'Chase Credit Card',
-            "sampleAccountName2": "Bank of America Checking",
-            "namesFunctionValidateData": 'Validate Data',
-            "namesFunctionSubmitData": 'Submit Data',
-            "namesFunctionGenerateDefaults": "Generate Defaults",
-            
-            "parameters": {
+            "defaultName": 'New {{label}}',
+            "info" :{
+                "data": {
+                    "none": {
+                        "saved": "No saved {items}"
+                    }
+                }
+            },
+            "error": {
+                "api":{
+                    "failed": `Error fetching data: [{{details}}]`
+                },
+                "constructor":{
+                    "missingArguments": `{{functionName}} requires [{{required}}]'`
+                },
+                "function":{
+                    "missingArguments": `{{functionName}} called missing required argument(s) [{{required}}]'`
+                },
+                "class": {
+                    "missing": `Class "{{class}}" does not exist`
+                },
+                "array": {
+                    "isNot": `Provided "{{item}}" is/are not an Array(s)`
+                },
+                "file": {
+                    "validateData": {
+                        "name": "Validate Data"
+                    },
+                    "submitData": {
+                        "name": "Submit Data"
+                    },
+                    "generateDefaults": {
+                        "name": "Generate Defaults"
+                    }
+                }
+            },
+            "example":{
+                "dashboard": [
+                    {
+                        "name": "Family Account"
+                    },
+                    {
+                        "name": "My Account"
+                    }
+                ],  
+                "state": [
+                    {
+                        "name": "Family Bills"
+                    },
+                    {
+                        "name": "My Bills"
+                    }
+                ],  
+                "deposit": [
+                    {
+                        "name": "Bank of America Desposit"
+                    }
+                ],
+                "payment": [
+                    {
+                        "name": "Chase Credit Card Payment"
+                    }
+                ],
+                "bill": [
+                    {
+                        "name":'High Balance Credit Card',
+                    },
+                    {
+                        "name":'Credit Card with Low Balance but more periods',
+                    },
+                    {
+                        "name":'Credit Card with Low Balance but even more periods',
+                    },
+                    {
+                        "name":'Credit Card with Low Balance but high apr',
+                    },
+                    {
+                        "name":'Credit Card with 2 payments',
+                    },
+                    {
+                        "name":'Credit Card with last payment',
+                    },
+                    {
+                        "name": 'Credit Card with type 1 payment and no payment set'
+                    }
+                ],
+                "account":[
+                    {
+                        "name": "Chase Credit Card"
+                    },
+                    {
+                        "name": "Bank of America Checking"
+                    }
+                ]
+            },
+            "class":{
+                "dashboard": {
+                    "name": "Dashboard"
+                },
+                "state": {
+                    "name": "State"
+                },
+                "deposit": {
+                    "name":"Deposit"
+                },
+                "account": {
+                    "name":"Account"
+                },
+                "payment": {
+                    "name":"Payment"
+                },
+                "bill": {
+                    "name":"Bill"
+                }
+            },
+            "parameter": {
                 "option": {
                     "name": "option"
                 },
                 "settings": {
-                    "name":"settings"
+                    "name": "settings"
                 },
                 "class": {
-                    "name":"class"
+                    "name": "class"
                 },
                 "required": {
-                    "name":"required"
+                    "name": "required"
                 },
                 "values": {
-                    "name":"values"
+                    "name": "values"
                 },
                 "key": {
-                    "name":"key"
+                    "name": "key"
                 }
-            },
-            // "namesParameterNameOption": 'option',
-            // "namesParameterNameSetttings": 'settings',
-            // "namesParameterNameClass": 'class',
-            // "namesParameterNameRequired": 'required',
-            // "namesParameterNameValues": 'values',
-
-
-
-            "functionMissingArguments": `{{functionName}} called missing required argument(s) [{{required}}]'`,
-            "constructorMissingArguments": `{{functionName}} requires [{{required}}]'`,
-            "doesNotExist": `"{{missing}}" does not exist`,
-            "notAnArray": 'Provided "{{item}}" is/are not an Array(s)',
-            "classDoesNotExist": 'Class "{{class}}" does not exist'
+            }
         }
       }
     }

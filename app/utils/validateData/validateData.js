@@ -7,9 +7,9 @@ import i18next from '../i18next/i18next';
  */
 export default (option, className) => {
         if(!option) {
-            const functionName = i18next.t('namesFunctionValidateData');
-            const required = i18next.t('parameters.option.name');
-            const error = i18next.t('functionMissingArguments', { functionName, required });
+            const functionName = i18next.t('error.file.validateData.name');
+            const required = i18next.t('parameter.option.name');
+            const error = i18next.t('error.function.missingArguments', { functionName, required });
             return {
                 error
             };
@@ -28,7 +28,7 @@ export default (option, className) => {
                     item.push(i18next.t('namesParameterNameValues'));
                 }
                 item = item.join(',');
-                const error = i18next.t('notAnArray', { item });
+                const error = i18next.t('error.array.isNot', { item });
                 return {
                      error
                 };
@@ -43,7 +43,7 @@ export default (option, className) => {
                 });
                 if(failed){
                     const functionName = `${i18next.t('namesParameterNameClass')}:${className}`;
-                    const error = i18next.t('constructorMissingArguments', { functionName, required: required.join(',')});
+                    const error = i18next.t('error.constructor.missingArguments', { functionName, required: required.join(',')});
                     return {
                         error,
                         required

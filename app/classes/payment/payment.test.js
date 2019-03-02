@@ -1,6 +1,7 @@
 import Payment from './payment';
-import data from './payment.samples';
-const {defaults, samples} = data;
+import samples from './payment.samples';
+import data from './payment.defaults';
+const {defaults, required} = data;
 
 test('Payment is defined', () => {
     expect(Payment).toBeDefined();

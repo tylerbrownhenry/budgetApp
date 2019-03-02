@@ -12,7 +12,7 @@ export default {
        let validateResponse = validateData({
             values: options ? options : undefined,
             required: ['class','values']
-        }, i18next.t('namesFunctionSubmitData'));
+        }, i18next.t('error.file.submitData.name'));
 
         if(validateResponse) {
             return validateResponse;
@@ -20,10 +20,11 @@ export default {
 
         if(typeof classes[options.class] === 'undefined'){
             return {
-                error: i18next.t('classDoesNotExist', {class: options.class})
+                error: i18next.t('error.class.missing', {class: options.class})
             }
         }
-
+        
+        let newItem
         /* Check initializing the class is valid */
         try {
             let newItem = new classes[options.class](options.values);

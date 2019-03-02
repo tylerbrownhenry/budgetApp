@@ -1,7 +1,24 @@
 import Bill from './bill';
-import data from './bill.samples';
+import samples from './bill.samples';
+import data from './bill.defaults';
+const {defaults, required} = data;
 
-const {defaults, samples, amortization} = data;
+const amortization = {
+    first:{ 
+        principle: '87.75',
+        interest: '5.83',
+        start: '1000.00',
+        end: '912.25',
+        month: 1 
+    },
+    last:{ 
+        principle: '93.54',
+        interest: '0.04',
+        start: '6.14',
+        end: '-87.41',
+        month: 12
+    }
+};
 
 test('Bill is defined', () => {
   expect(Bill).toBeDefined();

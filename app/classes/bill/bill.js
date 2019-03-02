@@ -1,5 +1,5 @@
 import Item from '../item';
-import data from './bill.samples';
+import data from './bill.defaults';
 const {defaults, required} = data;
 
 /**
@@ -146,7 +146,7 @@ export default class Bill extends Item {
             if (!interestRate){
                 return (balance + futureValue) / periods;
             }
-            
+
             const interest = Math.pow(1 + interestRate, periods);
             payment = -interestRate * balance * (interest + futureValue) / (interest - 1);
 
