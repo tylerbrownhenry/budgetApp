@@ -25,7 +25,7 @@ export default {
   init: function initStateHandler(id) {
     return new Promise(((resolve, reject) => {
       getData.loadStates(id).then((data) => {
-        const className = i18next.t('classes.state.name');
+        const className = i18next.t('class.state.name');
         return processData.convert(data.results, State, className, 'state', resolve, reject, process);
       }).catch(reject);
     }));
