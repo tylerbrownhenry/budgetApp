@@ -1,4 +1,4 @@
-This is an incomplete pet budget.
+This is an incomplete pet budget. Mostly was learning istanbul, and using immutable data and classes.
 
 # budgetApp
 Web app for tracking what debt to pay off first
